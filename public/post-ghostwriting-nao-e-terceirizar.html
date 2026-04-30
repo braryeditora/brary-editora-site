@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ghostwriting não é terceirizar a sua voz. É amplificá-la. — Brary Editora</title>
+  <meta name="description" content="A resistência ao ghostwriting nasce de um mal-entendido sobre autoria. Por Brary Editora." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #0B1F3A; --navy-deep: #07091C;
+      --gold: #B8963E; --gold-light: #D4AF6A; --gold-dim: rgba(184,150,62,0.15);
+      --cream: #F6F3EC; --white: #FDFCFA;
+      --gray-700: #4A4740; --gray-500: #8A8578;
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'Jost', sans-serif;
+      --nav-h: 72px; --max-w: 720px;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--sans); background: var(--cream); color: var(--navy); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    a { text-decoration: none; color: inherit; }
+    img { display: block; max-width: 100%; }
+
+    /* NAV */
+    .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 900; height: var(--nav-h); background: var(--navy); border-bottom: 1.5px solid var(--gold); display: flex; align-items: center; padding: 0 5vw; justify-content: space-between; transition: box-shadow .3s; }
+    .nav.scrolled { box-shadow: 0 4px 32px rgba(0,0,0,0.45); }
+    .nav-logo-img { height: auto; width: 160px; display: block; }
+    .nav-menu { display: flex; align-items: center; gap: 2rem; list-style: none; }
+    .nav-menu a { font-size: 0.72rem; font-weight: 400; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(253,252,250,0.72); transition: color .25s; }
+    .nav-menu a:hover, .nav-menu a.active { color: var(--gold-light); }
+    .nav-cta { display: inline-flex !important; padding: 0.55rem 1.3rem !important; background: var(--gold) !important; color: var(--navy) !important; font-weight: 600 !important; letter-spacing: 0.12em !important; border-radius: 1px; }
+    .nav-cta:hover { background: var(--gold-light) !important; }
+    .nav-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .nav-toggle span { display: block; width: 24px; height: 1.5px; background: var(--white); transition: transform .3s, opacity .3s; }
+    .nav-toggle.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2) { opacity: 0; }
+    .nav-toggle.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    /* POST HEADER */
+    .post-header {
+      background: var(--navy);
+      padding: calc(var(--nav-h) + 5rem) 5vw 5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .post-header::before {
+      content: '\201C';
+      position: absolute; font-family: var(--serif);
+      font-size: 28rem; line-height: 1; color: rgba(184,150,62,0.04);
+      top: -4rem; left: 50%; transform: translateX(-50%);
+      pointer-events: none; user-select: none;
+    }
+    .post-header-inner { max-width: var(--max-w); margin: 0 auto; position: relative; z-index: 1; }
+    .post-back { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.65rem; font-weight: 400; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(184,150,62,0.55); margin-bottom: 2.5rem; transition: color .25s; }
+    .post-back:hover { color: var(--gold-light); }
+    .post-tag { font-size: 0.62rem; font-weight: 500; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; }
+    .post-title { font-family: var(--serif); font-size: clamp(2.2rem, 4.5vw, 3.6rem); font-weight: 300; color: var(--white); line-height: 1.12; margin-bottom: 0.8rem; opacity: 0; animation: fadeUp .9s .2s forwards; }
+    .post-title em { font-style: italic; color: var(--gold-light); }
+    .post-meta { display: flex; align-items: center; justify-content: center; gap: 1.5rem; font-size: 0.65rem; letter-spacing: 0.1em; color: rgba(253,252,250,0.3); text-transform: uppercase; opacity: 0; animation: fadeUp .9s .5s forwards; margin-top: 1.5rem; }
+    .post-meta span::before { content: '·'; margin-right: 1.5rem; }
+    .post-meta span:first-child::before { display: none; }
+    .gold-rule { width: 40px; height: 1px; background: var(--gold); margin: 2rem auto 0; opacity: 0; animation: fadeUp .9s .6s forwards; }
+
+    /* ARTICLE BODY */
+    .post-body { max-width: var(--max-w); margin: 0 auto; padding: 5rem 5vw 3rem; }
+
+    .post-body p {
+      font-size: 1.05rem; font-weight: 300;
+      line-height: 1.86; color: var(--gray-700);
+      margin-bottom: 1.8rem;
+    }
+    .post-body p.lead {
+      font-family: var(--serif);
+      font-size: clamp(1.2rem, 2.2vw, 1.55rem);
+      font-weight: 300; color: var(--navy);
+      line-height: 1.55; margin-bottom: 2.5rem;
+    }
+
+    .post-pullquote {
+      border-left: 3px solid var(--gold);
+      padding: 1.8rem 2.2rem;
+      margin: 3rem 0;
+      background: rgba(184,150,62,0.04);
+    }
+    .post-pullquote p {
+      font-family: var(--serif);
+      font-size: clamp(1.2rem, 2.5vw, 1.65rem);
+      font-weight: 300; font-style: italic;
+      color: var(--navy); line-height: 1.45; margin: 0;
+    }
+    .post-pullquote em { color: var(--gold); font-style: normal; }
+
+    .post-divider { display: flex; align-items: center; gap: 1rem; margin: 3rem 0; }
+    .post-divider::before, .post-divider::after { content: ''; flex: 1; height: 1px; background: rgba(11,31,58,0.1); }
+    .post-divider span { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
+
+    /* Processo — bloco especial */
+    .process-note {
+      background: var(--navy);
+      padding: 2.4rem 2.8rem;
+      margin: 3rem 0;
+      border-left: 3px solid var(--gold);
+    }
+    .process-note-label {
+      font-size: 0.6rem; font-weight: 500; letter-spacing: 0.24em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 1rem;
+    }
+    .process-note p {
+      font-size: 0.92rem; font-weight: 300; line-height: 1.78;
+      color: rgba(253,252,250,0.65); margin: 0;
+    }
+    .process-note p + p { margin-top: 1rem; }
+
+    /* Vídeo */
+    .post-video { margin: 3.5rem 0; }
+    .post-video-label {
+      font-size: 0.6rem; font-weight: 500; letter-spacing: 0.24em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 1rem;
+      display: flex; align-items: center; gap: 0.8rem;
+    }
+    .post-video-label::after { content: ''; flex: 1; height: 1px; background: var(--gold-dim); }
+    .post-video-wrap {
+      position: relative; width: 100%; padding-bottom: 56.25%;
+      background: var(--navy-deep); overflow: hidden;
+    }
+    .post-video-wrap iframe {
+      position: absolute; top: 0; left: 0;
+      width: 100%; height: 100%;
+      border: none;
+    }
+
+    /* CTA */
+    .post-cta {
+      background: var(--navy); padding: 3rem;
+      margin: 3.5rem 0; text-align: center;
+    }
+    .post-cta p {
+      font-family: var(--serif);
+      font-size: clamp(1.2rem, 2.5vw, 1.7rem);
+      font-weight: 300; color: var(--white);
+      line-height: 1.4; margin-bottom: 1.8rem;
+    }
+    .post-cta p em { font-style: italic; color: var(--gold-light); }
+    .btn-primary { display: inline-flex; align-items: center; justify-content: center; padding: 0.9rem 2.2rem; background: var(--gold); color: var(--navy); font-size: 0.74rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; border-radius: 1px; transition: background .25s, transform .2s; }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+    /* Author */
+    .post-author { display: flex; align-items: center; gap: 1.2rem; padding: 2rem 0; border-top: 1px solid rgba(11,31,58,0.1); border-bottom: 1px solid rgba(11,31,58,0.1); margin: 3rem 0; }
+    .author-avatar { width: 52px; height: 52px; border-radius: 50%; background: var(--gold-dim); border: 1.5px solid var(--gold); display: flex; align-items: center; justify-content: center; font-family: var(--serif); font-size: 1.2rem; color: var(--gold-light); flex-shrink: 0; }
+    .author-name { font-size: 0.88rem; font-weight: 500; color: var(--navy); margin-bottom: 0.2rem; }
+    .author-role { font-size: 0.74rem; font-weight: 300; color: var(--gray-500); }
+
+    /* LinkedIn */
+    .linkedin-cta { display: flex; align-items: center; gap: 1.2rem; padding: 1.5rem 2rem; border: 1px solid rgba(184,150,62,0.25); margin: 3rem 0; transition: border-color .25s; }
+    .linkedin-cta:hover { border-color: var(--gold); }
+    .linkedin-icon { width: 40px; height: 40px; flex-shrink: 0; background: #0077B5; border-radius: 6px; display: flex; align-items: center; justify-content: center; }
+    .linkedin-cta-text p { font-size: 0.72rem; font-weight: 300; color: var(--gray-500); margin-bottom: 0.2rem; }
+    .linkedin-cta-text strong { font-size: 0.82rem; font-weight: 500; color: var(--navy); }
+
+    /* Post nav */
+    .post-nav { max-width: var(--max-w); margin: 0 auto; padding: 0 5vw 5rem; display: flex; justify-content: flex-start; }
+    .post-nav-back { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); transition: gap .25s; }
+    .post-nav-back:hover { gap: 0.8rem; }
+
+    /* FOOTER */
+    footer { background: #060D1A; border-top: 1.5px solid rgba(184,150,62,0.25); padding: 4rem 5vw 2.5rem; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; }
+    .footer-top { display: grid; grid-template-columns: 1.8fr 1fr 1fr; gap: 3rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(184,150,62,0.12); margin-bottom: 2rem; }
+    .footer-logo { height: auto; width: 140px; margin-bottom: 1.2rem; }
+    .footer-brand-tag { font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+    .footer-brand-desc { font-size: 0.8rem; font-weight: 300; line-height: 1.72; color: rgba(253,252,250,0.35); max-width: 280px; }
+    .footer-col-title { font-size: 0.6rem; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.2rem; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li + li { margin-top: 0.7rem; }
+    .footer-col ul a { font-size: 0.8rem; font-weight: 300; color: rgba(253,252,250,0.42); transition: color .2s; }
+    .footer-col ul a:hover { color: var(--gold-light); }
+    .footer-bottom { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+    .footer-copy { font-size: 0.7rem; color: rgba(253,252,250,0.22); }
+    .footer-credit { font-size: 0.7rem; color: rgba(253,252,250,0.22); transition: color .2s; }
+    .footer-credit:hover { color: var(--gold-light); }
+    .footer-est { font-family: var(--serif); font-size: 0.7rem; font-style: italic; color: rgba(184,150,62,0.4); }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .65s ease, transform .65s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      :root { --nav-h: 64px; }
+      .nav-menu { display: none; }
+      .nav-menu.open { display: flex; flex-direction: column; align-items: flex-start; position: fixed; top: var(--nav-h); left: 0; right: 0; background: var(--navy); padding: 2rem 5vw 2.5rem; border-top: 1px solid rgba(184,150,62,0.2); gap: 0; z-index: 899; }
+      .nav-menu.open li { width: 100%; }
+      .nav-menu.open li + li { border-top: 1px solid rgba(184,150,62,0.08); }
+      .nav-menu.open a { display: block; font-size: 0.95rem; padding: 0.9rem 0; }
+      .nav-menu.open .nav-cta { display: inline-flex !important; margin-top: 1rem; }
+      .nav-toggle { display: flex; }
+      .post-header { padding: calc(var(--nav-h) + 3rem) 5vw 3.5rem; }
+      .post-body p { font-size: 0.95rem; }
+      .post-cta { padding: 2.2rem 1.6rem; }
+      .process-note { padding: 1.8rem 1.6rem; }
+      .footer-top { grid-template-columns: 1fr; gap: 2rem; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav" id="nav">
+    <a href="index.html" aria-label="Brary Editora">
+      <img src="logo-branca.png" alt="Brary Editora" class="nav-logo-img" />
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-menu" id="navMenu">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#servicos">Serviços</a></li>
+      <li><a href="index.html#livraria">Catálogo</a></li>
+      <li><a href="blog.html" class="active">Conteúdo</a></li>
+      <li><a href="https://brary-institute-site.vercel.app" target="_blank" rel="noopener">Instituto</a></li>
+      <li><a href="contato.html" class="nav-cta">Publicar meu livro</a></li>
+    </ul>
+  </nav>
+
+  <header class="post-header">
+    <div class="post-header-inner">
+      <a href="blog.html" class="post-back">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M13 7H1M6 3L1 7l5 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Voltar ao blog
+      </a>
+      <p class="post-tag">Processo Editorial</p>
+      <h1 class="post-title">Ghostwriting não é terceirizar<br>a sua voz.<br><em>É amplificá-la.</em></h1>
+      <div class="post-meta">
+        <span>Brary Editora</span>
+        <span>Leitura: 4 minutos</span>
+      </div>
+      <div class="gold-rule"></div>
+    </div>
+  </header>
+
+  <article class="post-body">
+
+    <p class="lead reveal">
+      A resistência começa sempre no mesmo lugar.<br>
+      "Mas o livro vai ser meu se eu não escrevi?"
+    </p>
+
+    <p class="reveal">
+      Essa pergunta revela um mal-entendido antigo sobre o que é autoria.<br>
+      E sobre o que, de fato, é a escrita.
+    </p>
+
+    <div class="post-divider reveal"><span></span></div>
+
+    <p class="reveal">
+      Autoria não é sobre quem digitou.<br>
+      É sobre quem pensou, viveu e tem algo a dizer.
+    </p>
+
+    <p class="reveal">
+      Um arquiteto não ergue o prédio com as próprias mãos.<br>
+      Um compositor não toca todos os instrumentos da orquestra.<br>
+      A obra é deles. A execução, não.
+    </p>
+
+    <div class="post-divider reveal"><span></span></div>
+
+    <p class="reveal">
+      O ghostwriter não inventa.<br>
+      Ele organiza o que você já sabe — e encontra a forma mais precisa de dizer.
+    </p>
+
+    <p class="reveal">
+      É um processo de escuta profunda.<br>
+      De capturar sua voz, não substituí-la.
+    </p>
+
+    <!-- Bloco de processo real -->
+    <div class="process-note reveal">
+      <p class="process-note-label">Como funciona na prática</p>
+      <p>
+        Cada autor que chega à Brary não preenche um briefing engessado.
+        Passa por uma conversa profunda — gravada, anotada, desenhada no caderno.
+        Perguntas estratégicas que revelam dores e potenciais que o autor
+        muitas vezes ainda não havia nomeado.
+      </p>
+      <p>
+        Aquela página de anotações é a essência do autor.
+        É de lá que o livro nasce.
+      </p>
+    </div>
+
+    <div class="post-divider reveal"><span></span></div>
+
+    <p class="reveal">
+      Há um romantismo cultivado em torno da escrita solitária.<br>
+      O autor sozinho, à meia-noite, diante da página em branco.
+    </p>
+
+    <p class="reveal">
+      Os maiores nomes da literatura, do mundo corporativo e da política
+      usaram ghostwriters.<br>
+      Sempre usaram. E nunca negaram o que sabiam.
+    </p>
+
+    <div class="post-pullquote reveal">
+      <p>"O livro que você não escreve <em>não existe.</em><br>
+      O livro que você publica — sim."</p>
+    </div>
+
+    <p class="reveal">
+      Ter um livro não é sobre ter escrito cada palavra.<br>
+      É sobre ter colocado no mundo um pensamento que só você poderia ter.
+    </p>
+
+    <p class="reveal">
+      O ghostwriter é o instrumento.<br>
+      A voz é sempre sua.
+    </p>
+
+    <!-- Vídeo de depoimentos -->
+    <div class="post-video reveal">
+      <p class="post-video-label">O que dizem os autores</p>
+      <div class="post-video-wrap">
+        <iframe
+          src="https://www.youtube.com/embed/MO18mhWxj-o?rel=0&modestbranding=1&color=white"
+          title="Depoimentos de autores — Brary Editora"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="post-cta reveal">
+      <p>
+        Se você tem algo a dizer — e sabe que tem —<br>
+        talvez o que falta seja alguém que <em>saiba ouvir.</em>
+      </p>
+      <a href="contato.html" class="btn-primary">Conversar com a equipe</a>
+    </div>
+
+    <!-- Autor -->
+    <div class="post-author reveal">
+      <div class="author-avatar">B</div>
+      <div>
+        <div class="author-name">Brary Editora</div>
+        <div class="author-role">Ghostwriting &amp; Publicação Estratégica · Est. 2013</div>
+      </div>
+    </div>
+
+    <!-- LinkedIn -->
+    <a href="https://www.linkedin.com/company/braryeditora/"
+       target="_blank" rel="noopener"
+       class="linkedin-cta reveal">
+      <div class="linkedin-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
+          <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+        </svg>
+      </div>
+      <div class="linkedin-cta-text">
+        <p>Acompanhe a Brary Editora no LinkedIn</p>
+        <strong>linkedin.com/company/braryeditora</strong>
+      </div>
+    </a>
+
+  </article>
+
+  <div class="post-nav">
+    <a href="blog.html" class="post-nav-back">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M13 7H1M6 3L1 7l5 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Ver todos os artigos
+    </a>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div>
+          <img src="logo-branca.png" alt="Brary Editora" class="footer-logo" />
+          <div class="footer-brand-tag">Ghostwriting &amp; Publicação Estratégica</div>
+          <p class="footer-brand-desc">Trabalhamos com pessoas que têm muito a dizer — e que entendem que um livro bem feito é o investimento de posicionamento com o maior retorno de longo prazo.</p>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Navegação</div>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="https://www.braryeditora.com/braryon" target="_blank" rel="noopener">Livraria</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contato.html">Contato</a></li>
+            <li><a href="https://brary-institute-site.vercel.app" target="_blank" rel="noopener">Brary Institute ↗</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Serviços</div>
+          <ul>
+            <li><a href="contato.html">Ghostwriting Completo</a></li>
+            <li><a href="contato.html">Estruturação Estratégica</a></li>
+            <li><a href="contato.html">Registro Autoral</a></li>
+            <li><a href="https://www.braryeditora.com/braryon" target="_blank" rel="noopener">Catálogo de Livros</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">© 2025 braryeditora.com.br — Todos os direitos reservados</p>
+        <a href="https://ghostwriting-six.vercel.app/" target="_blank" rel="noopener" class="footer-credit">Ghostwriting por Orlando Carvalho ↗</a>
+        <p class="footer-est">Est. 2013</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('navToggle');
+    const menu = document.getElementById('navMenu');
+    const nav = document.getElementById('nav');
+    toggle.addEventListener('click', () => { toggle.classList.toggle('open'); menu.classList.toggle('open'); });
+    menu.querySelectorAll('a').forEach(l => l.addEventListener('click', () => { toggle.classList.remove('open'); menu.classList.remove('open'); }));
+    window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 10); }, { passive: true });
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  </script>
+</body>
+</html>
