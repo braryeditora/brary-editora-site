@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Página não encontrada — Brary Editora</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy:      #0B1F3A;
+      --navy-deep: #07091C;
+      --gold:      #B8963E;
+      --gold-light:#D4AF6A;
+      --cream:     #F6F3EC;
+      --white:     #FDFCFA;
+      --serif:     'Cormorant Garamond', Georgia, serif;
+      --sans:      'Jost', 'Segoe UI', sans-serif;
+    }
+    html, body {
+      height: 100%;
+      font-family: var(--sans);
+      background: var(--navy-deep);
+      color: var(--white);
+      -webkit-font-smoothing: antialiased;
+    }
+    a { text-decoration: none; color: inherit; }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 3rem 5vw;
+      position: relative;
+      overflow: hidden;
+    }
+    .page::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(184,150,62,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* L-frame */
+    .frame {
+      position: relative;
+      padding: 4rem 4rem;
+      max-width: 580px;
+      z-index: 2;
+    }
+    .frame::before, .frame::after,
+    .frame .corner-br, .frame .corner-bl {
+      content: '';
+      position: absolute;
+      width: 32px; height: 32px;
+      border-color: rgba(184,150,62,0.4);
+      border-style: solid;
+    }
+    .frame::before  { top: 0; left: 0;  border-width: 1.5px 0 0 1.5px; }
+    .frame::after   { top: 0; right: 0; border-width: 1.5px 1.5px 0 0; }
+    .frame .corner-br { bottom: 0; right: 0; border-width: 0 1.5px 1.5px 0; }
+    .frame .corner-bl { bottom: 0; left: 0;  border-width: 0 0 1.5px 1.5px; }
+
+    .num {
+      font-family: var(--serif);
+      font-size: clamp(5rem, 15vw, 9rem);
+      font-weight: 300;
+      color: rgba(184,150,62,0.15);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+      opacity: 0;
+      animation: fadeUp .7s .1s forwards;
+    }
+    .eyebrow {
+      font-size: 0.62rem;
+      font-weight: 400;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.4rem;
+      opacity: 0;
+      animation: fadeUp .7s .2s forwards;
+    }
+    .title {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 300;
+      line-height: 1.22;
+      color: var(--white);
+      margin-bottom: 1rem;
+      opacity: 0;
+      animation: fadeUp .7s .3s forwards;
+    }
+    .title em { font-style: italic; color: var(--gold-light); }
+    .desc {
+      font-size: 0.85rem;
+      font-weight: 300;
+      line-height: 1.7;
+      color: rgba(253,252,250,0.45);
+      margin-bottom: 2.5rem;
+      opacity: 0;
+      animation: fadeUp .7s .4s forwards;
+    }
+    .actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp .7s .5s forwards;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.85rem 2rem;
+      background: var(--gold);
+      color: var(--navy);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      border-radius: 1px;
+      transition: background .25s, transform .2s;
+    }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.85rem 2rem;
+      border: 1px solid rgba(184,150,62,0.35);
+      color: rgba(253,252,250,0.6);
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      border-radius: 1px;
+      transition: border-color .25s, color .25s;
+    }
+    .btn-ghost:hover { border-color: var(--gold); color: var(--white); }
+
+    .brand {
+      position: fixed;
+      top: 2rem; left: 5vw;
+      font-family: var(--serif);
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(253,252,250,0.5);
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <a href="index.html" class="brand">Brary Editora</a>
+
+  <div class="page">
+    <div class="frame">
+      <div class="corner-br"></div>
+      <div class="corner-bl"></div>
+      <div class="num">404</div>
+      <p class="eyebrow">Página não encontrada</p>
+      <h1 class="title">
+        Esta página<br>
+        <em>não existe ainda.</em>
+      </h1>
+      <p class="desc">
+        O endereço que você acessou não foi encontrado.<br>
+        Mas a home da Brary Editora está um clique de distância.
+      </p>
+      <div class="actions">
+        <a href="index.html" class="btn-primary">Voltar para a home</a>
+        <a href="contato.html" class="btn-ghost">Falar com a equipe</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

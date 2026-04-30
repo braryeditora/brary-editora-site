@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog — Brary Editora</title>
+    <meta name="description"
+        content="Perspectivas sobre autoria, ghostwriting e o uso estratégico do livro como instrumento de posicionamento." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap"
+        rel="stylesheet" />
+
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --navy: #0B1F3A;
+            --navy-deep: #07091C;
+            --gold: #B8963E;
+            --gold-light: #D4AF6A;
+            --gold-dim: rgba(184, 150, 62, 0.18);
+            --cream: #F6F3EC;
+            --white: #FDFCFA;
+            --gray-500: #8A8578;
+            --gray-700: #4A4740;
+            --serif: 'Cormorant Garamond', Georgia, serif;
+            --sans: 'Jost', 'Segoe UI', sans-serif;
+            --nav-h: 72px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--sans);
+            background: var(--cream);
+            color: var(--navy);
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* ─── NAV ──────────────────────────────────────────────────── */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 900;
+            height: var(--nav-h);
+            background: var(--navy);
+            border-bottom: 1.5px solid var(--gold);
+            display: flex;
+            align-items: center;
+            padding: 0 5vw;
+            justify-content: space-between;
+        }
+
+        .nav-brand {
+            display: flex;
+            flex-direction: column;
+            gap: 1px;
+        }
+
+        .nav-brand-name {
+            font-family: var(--serif);
+            font-size: 1.25rem;
+            font-weight: 600;
+            letter-spacing: 0.18em;
+            color: var(--white);
+            text-transform: uppercase;
+        }
+
+        .nav-brand-tag {
+            font-size: 0.6rem;
+            font-weight: 300;
+            letter-spacing: 0.22em;
+            color: var(--gold-light);
+            text-transform: uppercase;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            font-size: 0.72rem;
+            font-weight: 400;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: rgba(253, 252, 250, 0.72);
+            transition: color .25s;
+        }
+
+        .nav-menu a:hover {
+            color: var(--gold-light);
+        }
+
+        .nav-menu a.active {
+            color: var(--gold-light);
+        }
+
+        .nav-cta {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.55rem 1.25rem;
+            background: var(--gold);
+            color: var(--navy) !important;
+            font-weight: 600 !important;
+            letter-spacing: 0.12em !important;
+            border-radius: 1px;
+            transition: background .25s, transform .2s !important;
+        }
+
+        .nav-cta:hover {
+            background: var(--gold-light) !important;
+            transform: translateY(-1px);
+        }
+
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 4px;
+        }
+
+        .nav-toggle span {
+            display: block;
+            width: 24px;
+            height: 1.5px;
+            background: var(--white);
+        }
+
+        /* ─── PAGE HERO ─────────────────────────────────────────────── */
+        .page-hero {
+            background: var(--navy-deep);
+            padding: calc(var(--nav-h) + 5rem) 5vw 5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 50% 80% at 20% 50%, rgba(184, 150, 62, 0.06) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .page-hero-inner {
+            max-width: 680px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .page-eyebrow {
+            font-size: 0.62rem;
+            font-weight: 400;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1.2rem;
+            opacity: 0;
+            animation: fadeUp .7s .1s forwards;
+        }
+
+        .page-title {
+            font-family: var(--serif);
+            font-size: clamp(2.4rem, 5vw, 3.8rem);
+            font-weight: 300;
+            line-height: 1.18;
+            color: var(--white);
+            margin-bottom: 1.2rem;
+            opacity: 0;
+            animation: fadeUp .7s .25s forwards;
+        }
+
+        .page-title em {
+            font-style: italic;
+            color: var(--gold-light);
+        }
+
+        .page-lead {
+            font-size: 0.88rem;
+            font-weight: 300;
+            line-height: 1.72;
+            color: rgba(253, 252, 250, 0.5);
+            max-width: 500px;
+            opacity: 0;
+            animation: fadeUp .7s .4s forwards;
+        }
+
+        .page-linkedin {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 2rem;
+            font-size: 0.68rem;
+            font-weight: 400;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: rgba(253, 252, 250, 0.35);
+            opacity: 0;
+            animation: fadeUp .7s .55s forwards;
+            transition: color .2s;
+        }
+
+        .page-linkedin:hover {
+            color: var(--gold-light);
+        }
+
+        /* ─── BLOG GRID ─────────────────────────────────────────────── */
+        .blog-section {
+            padding: 5rem 5vw;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.5px;
+        }
+
+        /* Featured card */
+        .blog-card {
+            background: var(--white);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+            transition: transform .3s;
+        }
+
+        .blog-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--gold);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform .35s ease;
+        }
+
+        .blog-card:hover::after {
+            transform: scaleX(1);
+        }
+
+        .blog-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .blog-card-featured {
+            grid-column: 1 / -1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+        }
+
+        .blog-card-image {
+            background: var(--navy);
+            min-height: 280px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: flex-end;
+            padding: 2rem;
+        }
+
+        .blog-card-image::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 70% 60% at 30% 40%, rgba(184, 150, 62, 0.08) 0%, transparent 70%),
+                url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+        }
+
+        .blog-card-image-quote {
+            position: relative;
+            z-index: 2;
+            font-family: var(--serif);
+            font-size: clamp(1.4rem, 2.5vw, 2rem);
+            font-weight: 300;
+            font-style: italic;
+            color: rgba(253, 252, 250, 0.8);
+            line-height: 1.35;
+            border-left: 2px solid var(--gold);
+            padding-left: 1.2rem;
+        }
+
+        .blog-card-body {
+            padding: 2.4rem 2.4rem;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .blog-tag {
+            font-size: 0.6rem;
+            font-weight: 500;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .blog-featured-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.6rem;
+            font-weight: 500;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--navy);
+            background: var(--gold);
+            padding: 0.25rem 0.7rem;
+            margin-bottom: 1rem;
+            width: fit-content;
+        }
+
+        .blog-title {
+            font-family: var(--serif);
+            font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+            font-weight: 400;
+            line-height: 1.22;
+            color: var(--navy);
+            margin-bottom: 1rem;
+        }
+
+        .blog-excerpt {
+            font-size: 0.83rem;
+            font-weight: 300;
+            line-height: 1.72;
+            color: var(--gray-700);
+            flex: 1;
+            margin-bottom: 2rem;
+        }
+
+        .blog-meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 1.2rem;
+            border-top: 1px solid rgba(11, 31, 58, 0.08);
+        }
+
+        .blog-author {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .blog-author-avatar {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: var(--gold-dim);
+            border: 1px solid var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--serif);
+            font-size: 0.75rem;
+            color: var(--gold);
+        }
+
+        .blog-author-name {
+            font-size: 0.72rem;
+            font-weight: 400;
+            color: var(--navy);
+        }
+
+        .blog-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            font-size: 0.68rem;
+            font-weight: 500;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--gold);
+            transition: gap .2s;
+        }
+
+        .blog-link:hover {
+            gap: 0.7rem;
+        }
+
+        /* Standard cards */
+        .blog-card-standard {
+            padding: 2.4rem 2.2rem;
+        }
+
+        .blog-card-standard .blog-title {
+            font-size: 1.5rem;
+        }
+
+        /* Placeholder */
+        .blog-card-placeholder {
+            opacity: 0.38;
+            pointer-events: none;
+            cursor: default;
+        }
+
+        .blog-card-placeholder::after {
+            display: none;
+        }
+
+        .placeholder-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.6rem;
+            font-weight: 400;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--gray-500);
+            border: 1px solid rgba(138, 133, 120, 0.3);
+            padding: 0.25rem 0.7rem;
+            margin-bottom: 1rem;
+            width: fit-content;
+        }
+
+        /* ─── LINKEDIN CTA ──────────────────────────────────────────── */
+        .linkedin-cta {
+            background: var(--navy);
+            padding: 4rem 5vw;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .linkedin-cta-text {}
+
+        .linkedin-cta-eyebrow {
+            font-size: 0.62rem;
+            font-weight: 400;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 0.6rem;
+        }
+
+        .linkedin-cta-title {
+            font-family: var(--serif);
+            font-size: clamp(1.4rem, 2.5vw, 2rem);
+            font-weight: 300;
+            color: var(--white);
+            line-height: 1.28;
+        }
+
+        .linkedin-cta-title em {
+            font-style: italic;
+            color: var(--gold-light);
+        }
+
+        .btn-linkedin {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.85rem 2rem;
+            border: 1px solid rgba(184, 150, 62, 0.4);
+            color: rgba(253, 252, 250, 0.72);
+            font-size: 0.75rem;
+            font-weight: 400;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            border-radius: 1px;
+            transition: border-color .25s, color .25s;
+            white-space: nowrap;
+        }
+
+        .btn-linkedin:hover {
+            border-color: var(--gold);
+            color: var(--white);
+        }
+
+        /* ─── FOOTER ────────────────────────────────────────────────── */
+        footer {
+            background: #060D1A;
+            border-top: 1.5px solid rgba(184, 150, 62, 0.25);
+            padding: 3rem 5vw 2rem;
+        }
+
+        .footer-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-copy {
+            font-size: 0.7rem;
+            font-weight: 300;
+            color: rgba(253, 252, 250, 0.22);
+        }
+
+        .footer-est {
+            font-family: var(--serif);
+            font-size: 0.7rem;
+            font-style: italic;
+            color: rgba(184, 150, 62, 0.4);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .footer-links a {
+            font-size: 0.7rem;
+            font-weight: 300;
+            color: rgba(253, 252, 250, 0.28);
+            transition: color .2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold-light);
+        }
+
+        /* ─── ANIMATIONS ────────────────────────────────────────────── */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(18px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ─── RESPONSIVE ────────────────────────────────────────────── */
+        @media (max-width: 820px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .nav-menu.open {
+                display: flex;
+                flex-direction: column;
+                position: fixed;
+                top: var(--nav-h);
+                left: 0;
+                right: 0;
+                background: var(--navy);
+                padding: 2rem 5vw;
+                border-top: 1px solid rgba(184, 150, 62, 0.2);
+                gap: 1.4rem;
+            }
+
+            .nav-toggle {
+                display: flex;
+            }
+
+            .blog-card-featured {
+                grid-template-columns: 1fr;
+            }
+
+            .blog-card-image {
+                min-height: 200px;
+            }
+
+            .linkedin-cta {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ═══════════════════════════════ NAV ════════════════════════ -->
+    <nav class="nav" id="nav">
+        <a href="index.html" class="nav-brand">
+            <span class="nav-brand-name">Brary Editora</span>
+            <span class="nav-brand-tag">Ghostwriting &amp; Publicação</span>
+        </a>
+        <button class="nav-toggle" id="navToggle" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-menu" id="navMenu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="https://www.braryeditora.com/braryon" target="_blank" rel="noopener">Livraria</a></li>
+            <li><a href="blog.html" class="active">Blog</a></li>
+            <li><a href="https://brary-institute.web.app" target="_blank" rel="noopener">Instituto</a></li>
+            <li><a href="contato.html" class="nav-cta">Publicar meu livro</a></li>
+        </ul>
+    </nav>
+
+    <!-- ═══════════════════════════════ PAGE HERO ══════════════════ -->
+    <section class="page-hero">
+        <div class="page-hero-inner">
+            <p class="page-eyebrow">Conteúdo editorial</p>
+            <h1 class="page-title">
+                Para quem está<br>
+                <em>pensando em publicar.</em>
+            </h1>
+            <p class="page-lead">
+                Perspectivas honestas sobre autoria, ghostwriting e o uso
+                estratégico do livro como instrumento de posicionamento no mercado.
+            </p>
+            <a class="page-linkedin" href="https://www.linkedin.com/company/brary-editora" target="_blank"
+                rel="noopener">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                    <rect x="1" y="1" width="12" height="12" rx="2" stroke="currentColor" stroke-width="1" />
+                    <path d="M4 6v4M4 4.5v.01M7 10V7.5C7 6.7 7.7 6 8.5 6S10 6.7 10 7.5V10M7 6v4" stroke="currentColor"
+                        stroke-width="1" stroke-linecap="round" />
+                </svg>
+                Seguir a Brary no LinkedIn
+            </a>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════ BLOG GRID ══════════════════ -->
+    <div class="blog-section">
+        <div class="blog-grid">
+
+            <!-- FEATURED: O arquivo ainda está lá -->
+            <a class="blog-card blog-card-featured"
+                href="https://www.linkedin.com/posts/braryeditora_activity-7452901302000500736-GjjQ" target="_blank"
+                rel="noopener">
+
+                <div class="blog-card-image">
+                    <p class="blog-card-image-quote">
+                        "Em algum lugar no seu<br>computador existe<br>um arquivo."
+                    </p>
+                </div>
+
+                <div class="blog-card-body">
+                    <span class="blog-featured-badge">✦ Artigo em destaque</span>
+                    <span class="blog-tag">Reflexão editorial</span>
+                    <h2 class="blog-title">O arquivo ainda está lá.</h2>
+                    <p class="blog-excerpt">
+                        Em algum lugar no seu computador existe um arquivo. Pode ser um
+                        documento do Word, uma pasta de notas, um bloco de textos que você
+                        nunca terminou. Esse arquivo tem um nome — e esse nome costuma
+                        ser o título de um livro que você ainda não escreveu.
+                        <br><br>
+                        A pergunta não é se você tem conteúdo para um livro.
+                        A pergunta é por que ele ainda não existe.
+                    </p>
+                    <div class="blog-meta">
+                        <div class="blog-author">
+                            <div class="blog-author-avatar">B</div>
+                            <span class="blog-author-name">Brary Editora</span>
+                        </div>
+                        <span class="blog-link">
+                            Ler no LinkedIn
+                            <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
+                                <path d="M1 6.5h11M7 2.5l4.5 4-4.5 4" stroke="currentColor" stroke-width="1.2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- PLACEHOLDER 1 -->
+            <div class="blog-card blog-card-standard blog-card-placeholder">
+                <span class="placeholder-label">Em breve</span>
+                <span class="blog-tag">Estratégia editorial</span>
+                <h3 class="blog-title">Por que especialistas precisam de um livro — não de mais posts.</h3>
+                <p class="blog-excerpt">
+                    A lógica da autoridade no mercado atual e por que o livro continua
+                    sendo o único formato que nenhum algoritmo pode depreciar.
+                </p>
+                <div class="blog-meta">
+                    <div class="blog-author">
+                        <div class="blog-author-avatar">B</div>
+                        <span class="blog-author-name">Brary Editora</span>
+                    </div>
+                    <span class="blog-link">Em breve</span>
+                </div>
+            </div>
+
+            <!-- PLACEHOLDER 2 -->
+            <div class="blog-card blog-card-standard blog-card-placeholder">
+                <span class="placeholder-label">Em breve</span>
+                <span class="blog-tag">Ghostwriting</span>
+                <h3 class="blog-title">Ghostwriting não é terceirizar a sua voz. É amplificá-la.</h3>
+                <p class="blog-excerpt">
+                    O que um ghostwriter faz, como funciona o processo e por que
+                    os maiores nomes do mercado editorial usam esse recurso há décadas.
+                </p>
+                <div class="blog-meta">
+                    <div class="blog-author">
+                        <div class="blog-author-avatar">B</div>
+                        <span class="blog-author-name">Brary Editora</span>
+                    </div>
+                    <span class="blog-link">Em breve</span>
+                </div>
+            </div>
+
+            <!-- PLACEHOLDER 3 -->
+            <div class="blog-card blog-card-standard blog-card-placeholder">
+                <span class="placeholder-label">Em breve</span>
+                <span class="blog-tag">Publicação</span>
+                <h3 class="blog-title">ISBN, ficha catalográfica e registro autoral: o que ninguém explica direito.</h3>
+                <p class="blog-excerpt">
+                    Tudo que você precisa saber sobre a parte burocrática da publicação —
+                    sem juridiquês, sem enrolação.
+                </p>
+                <div class="blog-meta">
+                    <div class="blog-author">
+                        <div class="blog-author-avatar">B</div>
+                        <span class="blog-author-name">Brary Editora</span>
+                    </div>
+                    <span class="blog-link">Em breve</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════ LINKEDIN CTA ════════════════ -->
+    <div class="linkedin-cta">
+        <div class="linkedin-cta-text">
+            <p class="linkedin-cta-eyebrow">Acompanhe a Brary</p>
+            <h2 class="linkedin-cta-title">
+                Novos artigos publicados<br>
+                <em>toda semana no LinkedIn.</em>
+            </h2>
+        </div>
+        <a class="btn-linkedin" href="https://www.linkedin.com/company/brary-editora" target="_blank" rel="noopener">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <rect x="1" y="1" width="12" height="12" rx="2" stroke="currentColor" stroke-width="1" />
+                <path d="M4 6v4M4 4.5v.01M7 10V7.5C7 6.7 7.7 6 8.5 6S10 6.7 10 7.5V10M7 6v4" stroke="currentColor"
+                    stroke-width="1" stroke-linecap="round" />
+            </svg>
+            Seguir no LinkedIn
+        </a>
+    </div>
+
+    <!-- ═══════════════════════════════ FOOTER ══════════════════════ -->
+    <footer>
+        <div class="footer-bottom">
+            <p class="footer-copy">© 2025 braryeditora.com — Todos os direitos reservados</p>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="https://www.braryeditora.com/braryon" target="_blank" rel="noopener">Livraria</a>
+                <a href="contato.html">Contato</a>
+                <a href="https://brary-institute.web.app" target="_blank" rel="noopener">Instituto</a>
+            </div>
+            <p class="footer-est">Est. 2013</p>
+        </div>
+    </footer>
+
+    <script>
+        const toggle = document.getElementById('navToggle');
+        const menu = document.getElementById('navMenu');
+        toggle.addEventListener('click', () => menu.classList.toggle('open'));
+
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => {
+            nav.style.boxShadow = window.scrollY > 10 ? '0 4px 32px rgba(0,0,0,0.45)' : 'none';
+        });
+
+        const reveals = document.querySelectorAll('.blog-card');
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.style.opacity = e.target.classList.contains('blog-card-placeholder') ? '0.38' : '1';
+                    e.target.style.transform = e.target.style.transform.replace('translateY(20px)', 'translateY(0)');
+                    io.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.08 });
+
+        reveals.forEach(el => {
+            if (!el.classList.contains('blog-card-placeholder')) {
+                el.style.opacity = '0';
+                el.style.transform += ' translateY(20px)';
+                el.style.transition += ', opacity .6s ease, transform .6s ease';
+                io.observe(el);
+            }
+        });
+    </script>
+
+</body>
+
+</html>

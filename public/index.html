@@ -1,0 +1,1392 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brary Editora — Ghostwriting &amp; Publicação Estratégica</title>
+  <meta name="description" content="Transformamos especialistas em autores publicados. Ghostwriting, estruturação e registro autoral para quem quer posicionamento real no mercado." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── RESET & ROOT ─────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:       #0B1F3A;
+      --navy-deep:  #07091C;
+      --gold:       #B8963E;
+      --gold-light: #D4AF6A;
+      --gold-dim:   rgba(184,150,62,0.18);
+      --cream:      #F6F3EC;
+      --white:      #FDFCFA;
+      --gray-500:   #8A8578;
+      --gray-700:   #4A4740;
+      --serif:      'Cormorant Garamond', Georgia, serif;
+      --sans:       'Jost', 'Segoe UI', sans-serif;
+      --nav-h:      72px;
+      --max-w:      1100px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--cream);
+      color: var(--navy);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    a { text-decoration: none; color: inherit; }
+    img { display: block; max-width: 100%; height: auto; }
+
+    .wrap {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 5vw;
+    }
+
+    /* ─── NAV ──────────────────────────────────────────────────── */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 900;
+      height: var(--nav-h);
+      background: var(--navy);
+      border-bottom: 1.5px solid var(--gold);
+      display: flex;
+      align-items: center;
+      padding: 0 5vw;
+      justify-content: space-between;
+      transition: box-shadow .3s;
+    }
+    .nav.scrolled { box-shadow: 0 4px 32px rgba(0,0,0,0.45); }
+
+    .nav-logo-img {
+      height: 38px;
+      width: auto;
+      display: block;
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-menu a {
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(253,252,250,0.72);
+      transition: color .25s;
+    }
+    .nav-menu a:hover { color: var(--gold-light); }
+
+    .nav-cta {
+      display: inline-flex !important;
+      align-items: center;
+      padding: 0.55rem 1.3rem !important;
+      background: var(--gold) !important;
+      color: var(--navy) !important;
+      font-weight: 600 !important;
+      letter-spacing: 0.12em !important;
+      border-radius: 1px;
+      transition: background .25s !important;
+    }
+    .nav-cta:hover { background: var(--gold-light) !important; color: var(--navy) !important; }
+
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .nav-toggle span {
+      display: block;
+      width: 24px;
+      height: 1.5px;
+      background: var(--white);
+      transition: transform .3s, opacity .3s;
+    }
+    .nav-toggle.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2) { opacity: 0; }
+    .nav-toggle.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    /* ─── HERO ─────────────────────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      background: var(--navy-deep);
+      display: flex;
+      align-items: center;
+      padding: calc(var(--nav-h) + 4rem) 5vw 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 65% 55% at 25% 55%, rgba(184,150,62,0.06) 0%, transparent 65%),
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      max-width: var(--max-w);
+      width: 100%;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    /* Hero text side */
+    .hero-content {}
+    .hero-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      font-size: 0.62rem;
+      font-weight: 400;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 2rem;
+      opacity: 0;
+      animation: fadeUp .8s .2s forwards;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 36px; height: 1px;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+    .hero-headline {
+      font-family: var(--serif);
+      font-size: clamp(2.6rem, 4.8vw, 4.2rem);
+      font-weight: 300;
+      line-height: 1.14;
+      color: var(--white);
+      margin-bottom: 1.8rem;
+      opacity: 0;
+      animation: fadeUp .8s .4s forwards;
+    }
+    .hero-headline em { font-style: italic; color: var(--gold-light); }
+    .hero-sub {
+      font-size: 0.9rem;
+      font-weight: 300;
+      line-height: 1.76;
+      color: rgba(253,252,250,0.5);
+      margin-bottom: 2.8rem;
+      opacity: 0;
+      animation: fadeUp .8s .6s forwards;
+      max-width: 440px;
+    }
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp .8s .8s forwards;
+    }
+
+    /* Hero mark — decorative logo symbol */
+    .hero-mark {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      animation: fadeIn 1.4s .5s forwards;
+      pointer-events: none;
+      user-select: none;
+    }
+    .hero-mark svg {
+      width: 100%;
+      max-width: 460px;
+      height: auto;
+    }
+
+    /* ─── BUTTONS ───────────────────────────────────────────────── */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.9rem 2rem;
+      background: var(--gold);
+      color: var(--navy);
+      font-size: 0.74rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      border-radius: 1px;
+      transition: background .25s, transform .2s, box-shadow .25s;
+      white-space: nowrap;
+    }
+    .btn-primary:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(184,150,62,0.28);
+    }
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.9rem 2rem;
+      border: 1px solid rgba(184,150,62,0.45);
+      color: rgba(253,252,250,0.72);
+      font-size: 0.74rem;
+      font-weight: 400;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      border-radius: 1px;
+      transition: border-color .25s, color .25s;
+      white-space: nowrap;
+    }
+    .btn-ghost:hover { border-color: var(--gold); color: var(--white); }
+
+    /* ─── SECTION SHARED ────────────────────────────────────────── */
+    section { padding: 6rem 5vw; }
+    .section-eyebrow {
+      font-size: 0.62rem;
+      font-weight: 400;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.9rem;
+    }
+    .section-title {
+      font-family: var(--serif);
+      font-size: clamp(1.9rem, 3.5vw, 2.9rem);
+      font-weight: 300;
+      line-height: 1.22;
+      color: var(--navy);
+      margin-bottom: 1rem;
+    }
+    .section-title em { font-style: italic; color: var(--gold); }
+    .section-lead {
+      font-size: 0.87rem;
+      font-weight: 300;
+      line-height: 1.76;
+      color: var(--gray-700);
+      max-width: 560px;
+    }
+    .section-header { margin-bottom: 3.5rem; }
+    .gold-rule { width: 40px; height: 1.5px; background: var(--gold); margin: 1.2rem 0; }
+
+    /* ─── CLARITY ────────────────────────────────────────────────── */
+    .clarity {
+      background: var(--cream);
+      padding: 6rem 5vw;
+      border-bottom: 1px solid rgba(184,150,62,0.15);
+    }
+    .clarity-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+    }
+    .clarity-title {
+      font-family: var(--serif);
+      font-size: clamp(1.7rem, 3vw, 2.5rem);
+      font-weight: 300;
+      line-height: 1.24;
+      color: var(--navy);
+      margin-bottom: 3.2rem;
+      max-width: 640px;
+    }
+    .clarity-title em { font-style: italic; color: var(--gold); }
+
+    .clarity-item {
+      display: grid;
+      grid-template-columns: 60px 1fr;
+      gap: 1.6rem;
+      align-items: start;
+      padding: 1.8rem 0;
+      border-bottom: 1px solid rgba(11,31,58,0.08);
+    }
+    .clarity-item:first-of-type { border-top: 1px solid rgba(11,31,58,0.08); }
+    .clarity-num {
+      font-family: var(--serif);
+      font-size: 1.6rem;
+      font-weight: 300;
+      color: var(--gold);
+      line-height: 1;
+      padding-top: 4px;
+    }
+    .clarity-item-title {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      font-weight: 400;
+      color: var(--navy);
+      margin-bottom: 0.4rem;
+      line-height: 1.3;
+    }
+    .clarity-item-desc {
+      font-size: 0.84rem;
+      font-weight: 300;
+      line-height: 1.72;
+      color: var(--gray-700);
+    }
+
+    /* ─── SERVICES ──────────────────────────────────────────────── */
+    .services { background: var(--white); }
+    .services-inner { max-width: var(--max-w); margin: 0 auto; }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+    .service-card {
+      background: var(--cream);
+      padding: 2.8rem 2.4rem;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform .3s;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px; height: 0;
+      background: var(--gold);
+      transition: height .4s ease;
+    }
+    .service-card:hover::before { height: 100%; }
+    .service-card:hover { transform: translateY(-4px); }
+    .service-num {
+      font-family: var(--serif);
+      font-size: 3rem;
+      font-weight: 300;
+      color: var(--gold-dim);
+      line-height: 1;
+      margin-bottom: 1.4rem;
+      user-select: none;
+    }
+    .service-title {
+      font-family: var(--serif);
+      font-size: 1.55rem;
+      font-weight: 400;
+      color: var(--navy);
+      margin-bottom: 0.75rem;
+      line-height: 1.2;
+    }
+    .service-desc {
+      font-size: 0.83rem;
+      font-weight: 300;
+      line-height: 1.72;
+      color: var(--gray-700);
+      flex: 1;
+    }
+    .service-deliverable {
+      margin-top: 1.1rem;
+      font-size: 0.73rem;
+      font-weight: 400;
+      color: var(--navy);
+      opacity: 0.45;
+      line-height: 1.5;
+    }
+    .service-price {
+      display: block;
+      margin-top: 1.4rem;
+      padding-top: 0.9rem;
+      border-top: 1px solid var(--gold-dim);
+      font-size: 0.67rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .service-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-top: 1rem;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      transition: gap .2s;
+    }
+    .service-cta:hover { gap: 0.65rem; }
+
+    /* ─── AUTHORITY ──────────────────────────────────────────────── */
+    .authority {
+      background: var(--navy);
+      padding: 5rem 5vw;
+    }
+    .authority-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      border: 1px solid rgba(184,150,62,0.2);
+    }
+    .authority-stat {
+      padding: 3rem 2.8rem;
+      border-right: 1px solid rgba(184,150,62,0.2);
+    }
+    .authority-stat:last-child { border-right: none; }
+    .authority-num {
+      font-family: var(--serif);
+      font-size: clamp(2.4rem, 4vw, 3.4rem);
+      font-weight: 300;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 0.7rem;
+    }
+    .authority-label {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--white);
+      letter-spacing: 0.04em;
+      margin-bottom: 0.6rem;
+    }
+    .authority-desc {
+      font-size: 0.76rem;
+      font-weight: 300;
+      line-height: 1.65;
+      color: rgba(253,252,250,0.38);
+    }
+
+    /* ─── BOOKS ─────────────────────────────────────────────────── */
+    .books { background: var(--navy-deep); }
+    .books-inner { max-width: var(--max-w); margin: 0 auto; }
+    .books .section-title { color: var(--white); }
+    .books .section-lead { color: rgba(253,252,250,0.5); }
+
+    .books-grid {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 5rem;
+      align-items: center;
+      margin-top: 3.5rem;
+    }
+    .book-cover-wrap {
+      position: relative;
+      flex-shrink: 0;
+    }
+    .book-cover {
+      width: 240px;
+      aspect-ratio: 2/3;
+      background: #E8C437;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 1.8rem;
+      position: relative;
+      box-shadow: 16px 22px 60px rgba(0,0,0,0.72), 0 2px 8px rgba(0,0,0,0.4);
+      transform: rotate(-2deg);
+      transition: transform .4s;
+    }
+    .book-cover:hover { transform: rotate(0deg) translateY(-8px); }
+    .book-cover-spine {
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 14px;
+      background: rgba(0,0,0,0.15);
+    }
+    .book-cover-label {
+      font-size: 0.58rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(11,31,58,0.55);
+      margin-bottom: 0.5rem;
+    }
+    .book-cover-title {
+      font-family: var(--sans);
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.05;
+      text-transform: uppercase;
+    }
+    .book-cover-author {
+      margin-top: 0.7rem;
+      font-size: 0.65rem;
+      font-weight: 400;
+      color: var(--navy);
+      letter-spacing: 0.08em;
+      opacity: 0.65;
+    }
+    .book-badge {
+      position: absolute;
+      top: -18px; right: -18px;
+      width: 76px; height: 76px;
+      border-radius: 50%;
+      background: var(--gold);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--serif);
+      font-size: 0.62rem;
+      font-weight: 600;
+      color: var(--navy);
+      text-align: center;
+      line-height: 1.3;
+      box-shadow: 0 4px 20px rgba(184,150,62,0.45);
+    }
+    .book-info { color: var(--white); }
+    .book-subtitle {
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      font-style: italic;
+      font-weight: 300;
+      color: var(--gold-light);
+      line-height: 1.6;
+      margin-bottom: 1.4rem;
+    }
+    .book-desc {
+      font-size: 0.86rem;
+      font-weight: 300;
+      line-height: 1.78;
+      color: rgba(253,252,250,0.55);
+      margin-bottom: 1.6rem;
+    }
+    .book-asset-note {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.85rem;
+      padding: 1rem 1.2rem;
+      border: 1px solid rgba(184,150,62,0.2);
+      margin-bottom: 2rem;
+    }
+    .book-asset-note svg { flex-shrink: 0; margin-top: 3px; }
+    .book-asset-note p { font-size: 0.78rem; font-weight: 300; line-height: 1.6; color: rgba(253,252,250,0.48); }
+    .book-asset-note strong { display: block; font-size: 0.65rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.25rem; }
+    .book-author-line { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 2rem; }
+    .author-avatar {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: var(--gold-dim);
+      border: 1.5px solid var(--gold);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      color: var(--gold-light);
+      flex-shrink: 0;
+    }
+    .author-name { font-size: 0.82rem; font-weight: 500; color: var(--white); letter-spacing: 0.06em; }
+    .author-role { font-size: 0.7rem; color: rgba(253,252,250,0.42); }
+
+    /* ─── INSTITUTIONAL STRIP ───────────────────────────────────── */
+    .institutional {
+      background: var(--navy);
+      padding: 4.5rem 5vw;
+      border-top: 1px solid rgba(184,150,62,0.15);
+      border-bottom: 1px solid rgba(184,150,62,0.15);
+    }
+    .institutional-inner {
+      max-width: 680px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+    }
+    /* decorative large quote mark */
+    .institutional-inner::before {
+      content: '\201C';
+      position: absolute;
+      top: -2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: var(--serif);
+      font-size: 10rem;
+      line-height: 1;
+      color: rgba(184,150,62,0.07);
+      pointer-events: none;
+      user-select: none;
+    }
+    .institutional-quote {
+      font-family: var(--serif);
+      font-size: clamp(1.1rem, 2.2vw, 1.55rem);
+      font-weight: 300;
+      font-style: italic;
+      color: rgba(253,252,250,0.65);
+      line-height: 1.56;
+      margin-bottom: 1rem;
+      position: relative;
+    }
+    .institutional-quote em { font-style: normal; color: var(--gold-light); }
+    .institutional-attr {
+      font-size: 0.6rem;
+      font-weight: 400;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(184,150,62,0.45);
+    }
+
+    /* ─── BLOG ──────────────────────────────────────────────────── */
+    .blog { background: var(--cream); }
+    .blog-inner { max-width: var(--max-w); margin: 0 auto; }
+    .blog-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+    .blog-card {
+      background: var(--white);
+      padding: 2.6rem 2.2rem;
+      display: flex;
+      flex-direction: column;
+      transition: transform .3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .blog-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .35s ease;
+    }
+    .blog-card:hover::after { transform: scaleX(1); }
+    .blog-card:hover { transform: translateY(-4px); }
+    .blog-card.dimmed { opacity: 0.38; pointer-events: none; }
+    .blog-tag {
+      font-size: 0.6rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+    .blog-title {
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      font-weight: 400;
+      line-height: 1.24;
+      color: var(--navy);
+      margin-bottom: 0.9rem;
+    }
+    .blog-excerpt {
+      font-size: 0.83rem;
+      font-weight: 300;
+      line-height: 1.72;
+      color: var(--gray-700);
+      flex: 1;
+      margin-bottom: 1.8rem;
+    }
+    .blog-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      transition: gap .25s;
+    }
+    .blog-link:hover { gap: 0.8rem; }
+
+    /* ─── CTA BAND ──────────────────────────────────────────────── */
+    .cta-band {
+      background: var(--navy-deep);
+      padding: 7rem 5vw;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 1.8rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-band::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 55% 70% at 50% 50%, rgba(184,150,62,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .cta-eyebrow {
+      font-size: 0.62rem;
+      font-weight: 400;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .cta-title {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 300;
+      color: var(--white);
+      line-height: 1.22;
+    }
+    .cta-title em { font-style: italic; color: var(--gold-light); }
+    .cta-sub {
+      font-size: 0.86rem;
+      font-weight: 300;
+      color: rgba(253,252,250,0.42);
+      max-width: 440px;
+      line-height: 1.75;
+    }
+    .cta-urgency {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .cta-urgency-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.67rem;
+      letter-spacing: 0.08em;
+      color: rgba(253,252,250,0.28);
+    }
+    .cta-urgency-item::before {
+      content: '';
+      display: block;
+      width: 4px; height: 4px;
+      border-radius: 50%;
+      background: rgba(184,150,62,0.45);
+    }
+
+    /* ─── FOOTER ────────────────────────────────────────────────── */
+    footer {
+      background: #060D1A;
+      border-top: 1.5px solid rgba(184,150,62,0.25);
+      padding: 4rem 5vw 2.5rem;
+    }
+    .footer-inner { max-width: var(--max-w); margin: 0 auto; }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.8fr 1fr 1fr;
+      gap: 3rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid rgba(184,150,62,0.12);
+      margin-bottom: 2rem;
+    }
+    .footer-logo { height: 32px; width: auto; margin-bottom: 1.2rem; }
+    .footer-brand-tag {
+      font-size: 0.6rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+    .footer-brand-desc {
+      font-size: 0.8rem;
+      font-weight: 300;
+      line-height: 1.72;
+      color: rgba(253,252,250,0.35);
+      max-width: 280px;
+    }
+    .footer-col-title {
+      font-size: 0.6rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.2rem;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li + li { margin-top: 0.7rem; }
+    .footer-col ul a { font-size: 0.8rem; font-weight: 300; color: rgba(253,252,250,0.42); transition: color .2s; }
+    .footer-col ul a:hover { color: var(--gold-light); }
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-copy { font-size: 0.7rem; font-weight: 300; color: rgba(253,252,250,0.22); letter-spacing: 0.06em; }
+    .footer-credit {
+      font-size: 0.7rem;
+      font-weight: 300;
+      color: rgba(253,252,250,0.22);
+      letter-spacing: 0.06em;
+      transition: color .2s;
+    }
+    .footer-credit:hover { color: var(--gold-light); }
+    .footer-est { font-family: var(--serif); font-size: 0.7rem; font-style: italic; color: rgba(184,150,62,0.4); }
+
+    /* ─── ANIMATIONS ────────────────────────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    /* Scroll reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .65s ease, transform .65s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    /* dimmed reveal cards need to stay dimmed when visible */
+    .blog-card.dimmed.reveal.visible { opacity: 0.38; }
+
+    /* ─── RESPONSIVE ────────────────────────────────────────────── */
+
+    /* Tablet */
+    @media (max-width: 960px) {
+      .services-grid { grid-template-columns: 1fr; gap: 2px; }
+      .blog-cards { grid-template-columns: 1fr; gap: 2px; }
+      .books-grid { gap: 3rem; }
+    }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+      :root { --nav-h: 64px; }
+      section { padding: 4rem 5vw; }
+
+      /* Nav mobile */
+      .nav { padding: 0 5vw; }
+      .nav-menu {
+        display: none;
+      }
+      .nav-menu.open {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        position: fixed;
+        top: var(--nav-h);
+        left: 0; right: 0;
+        background: var(--navy);
+        padding: 2rem 5vw 2.5rem;
+        border-top: 1px solid rgba(184,150,62,0.2);
+        border-bottom: 1.5px solid var(--gold);
+        gap: 0;
+        z-index: 899;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+      }
+      .nav-menu.open li { width: 100%; }
+      .nav-menu.open li + li { border-top: 1px solid rgba(184,150,62,0.08); }
+      .nav-menu.open a {
+        display: block;
+        font-size: 0.95rem;
+        padding: 0.9rem 0;
+        letter-spacing: 0.1em;
+        color: rgba(253,252,250,0.8);
+      }
+      .nav-menu.open .nav-cta {
+        display: inline-flex !important;
+        margin-top: 1rem;
+        padding: 0.8rem 1.6rem !important;
+        width: auto;
+        align-self: flex-start;
+      }
+      .nav-toggle { display: flex; }
+
+      /* Hero mobile */
+      .hero {
+        padding: calc(var(--nav-h) + 2.5rem) 5vw 4rem;
+        align-items: flex-start;
+      }
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+      .hero-mark { display: none; }
+      .hero-headline { font-size: clamp(2.2rem, 9vw, 3rem); }
+      .hero-sub { max-width: 100%; }
+      .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .hero-actions .btn-primary,
+      .hero-actions .btn-ghost { text-align: center; width: 100%; }
+
+      /* Clarity mobile */
+      .clarity { padding: 4rem 5vw; }
+      .clarity-item { grid-template-columns: 48px 1fr; gap: 1.2rem; }
+
+      /* Services mobile */
+      .services-grid { grid-template-columns: 1fr; }
+
+      /* Authority mobile */
+      .authority { padding: 4rem 5vw; }
+      .authority-inner { grid-template-columns: 1fr; }
+      .authority-stat {
+        border-right: none;
+        border-bottom: 1px solid rgba(184,150,62,0.2);
+      }
+      .authority-stat:last-child { border-bottom: none; }
+      .authority-stat { padding: 2.4rem 2rem; }
+
+      /* Books mobile */
+      .books { padding: 4rem 5vw; }
+      .books-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+      .book-cover-wrap {
+        display: flex;
+        justify-content: center;
+      }
+      .book-cover { width: 200px; }
+
+      /* Blog mobile */
+      .blog-cards { grid-template-columns: 1fr; }
+
+      /* CTA band mobile */
+      .cta-band { padding: 5rem 5vw; }
+      .cta-urgency {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+        width: 100%;
+      }
+
+      /* Footer mobile */
+      .footer-top { grid-template-columns: 1fr; gap: 2.5rem; }
+      .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.6rem;
+      }
+    }
+
+    /* Small phones */
+    @media (max-width: 400px) {
+      .hero-headline { font-size: 2rem; }
+      .clarity-title { font-size: 1.55rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════════ NAV ═══════════════ -->
+  <nav class="nav" id="nav">
+    <a href="index.html" class="nav-brand" aria-label="Brary Editora">
+      <!-- Substitua logo-branca.png pela logo com fundo transparente -->
+      <img src="logo-branca.png" alt="Brary Editora" class="nav-logo-img" />
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Abrir menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-menu" id="navMenu">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="#servicos">Serviços</a></li>
+      <li><a href="#livraria">Catálogo</a></li>
+      <li><a href="#blog">Conteúdo</a></li>
+      <li><a href="https://brary-institute-site.vercel.app" target="_blank" rel="noopener">Instituto</a></li>
+      <li><a href="contato.html" class="nav-cta">Publicar meu livro</a></li>
+    </ul>
+  </nav>
+
+  <!-- ═══════════════ HERO ═══════════════ -->
+  <section class="hero" id="hero">
+    <div class="hero-inner">
+
+      <!-- Texto -->
+      <div class="hero-content">
+        <p class="hero-eyebrow">Editora Brasileira — Est. 2013</p>
+        <h1 class="hero-headline">
+          Você tem o<br>
+          conhecimento.<br>
+          Nós construímos<br>
+          <em>a sua autoridade.</em>
+        </h1>
+        <p class="hero-sub">
+          Especialistas, empresários e criadores que publicam com a Brary
+          saem com um livro profissional, registro autoral completo
+          e posicionamento real no seu mercado.
+        </p>
+        <div class="hero-actions">
+          <a href="contato.html" class="btn-primary">Quero publicar meu livro</a>
+          <a href="#o-que-voce-recebe" class="btn-ghost">Ver como funciona</a>
+        </div>
+      </div>
+
+      <!-- Marca decorativa: símbolo da logo em escala grande -->
+      <div class="hero-mark" aria-hidden="true">
+        <svg viewBox="0 0 420 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Elemento traseiro (sombra) -->
+          <path d="
+            M 118 88
+            C 118 68 132 58 152 60
+            L 348 74
+            C 368 76 376 92 374 110
+            L 350 400
+            L 105 382
+            Z"
+            fill="rgba(184,150,62,0.07)"
+          />
+          <!-- Elemento frontal principal -->
+          <path d="
+            M 38 62
+            C 38 40 56 30 78 32
+            L 280 46
+            C 302 48 310 66 308 86
+            L 284 382
+            C 282 398 268 406 252 404
+            L 42 388
+            C 24 386 20 370 22 352
+            Z"
+            fill="rgba(184,150,62,0.11)"
+          />
+          <!-- Detalhe interno sutil -->
+          <path d="
+            M 80 108
+            L 264 120
+            L 242 350
+            L 62 336
+            Z"
+            fill="rgba(184,150,62,0.04)"
+          />
+          <!-- Linha dourada superior -->
+          <line x1="78" y1="32" x2="280" y2="46"
+            stroke="rgba(184,150,62,0.22)" stroke-width="1.5"/>
+          <!-- Ponto de luz no canto superior esquerdo -->
+          <circle cx="78" cy="32" r="3"
+            fill="rgba(184,150,62,0.35)"/>
+        </svg>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════ CLARITY ═══════════════ -->
+  <section class="clarity" id="o-que-voce-recebe">
+    <div class="clarity-inner">
+      <h2 class="clarity-title reveal">
+        Um livro é o único ativo que<br>
+        <em>nenhum algoritmo</em> pode depreciar.
+      </h2>
+
+      <div class="clarity-item reveal">
+        <div class="clarity-num">01</div>
+        <div>
+          <div class="clarity-item-title">Livro profissional, escrito com a sua voz</div>
+          <p class="clarity-item-desc">Nossa equipe captura sua expertise, sua história e seu jeito de pensar — e entrega uma obra que é genuinamente sua. Você assina. Nós escrevemos.</p>
+        </div>
+      </div>
+
+      <div class="clarity-item reveal">
+        <div class="clarity-num">02</div>
+        <div>
+          <div class="clarity-item-title">Posicionamento como autoridade no seu mercado</div>
+          <p class="clarity-item-desc">Um livro bem posicionado abre conversas que currículo, posts e palestras não abrem. É credencial permanente — não depende de alcance nem de plataforma.</p>
+        </div>
+      </div>
+
+      <div class="clarity-item reveal">
+        <div class="clarity-num">03</div>
+        <div>
+          <div class="clarity-item-title">Estrutura pronta para gerar negócios</div>
+          <p class="clarity-item-desc">Do ISBN ao registro na Biblioteca Nacional, cuidamos de toda a parte burocrática. Você foca no que sabe fazer. Nós garantimos que o livro chegue ao mercado com tudo em ordem.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ SERVICES ═══════════════ -->
+  <section class="services" id="servicos">
+    <div class="services-inner">
+      <div class="section-header">
+        <p class="section-eyebrow">Serviços</p>
+        <h2 class="section-title reveal">Três formas de<br><em>chegar ao mercado</em></h2>
+        <div class="gold-rule"></div>
+        <p class="section-lead reveal">
+          Cada projeto é desenvolvido de forma personalizada.
+          Trabalhamos com um número limitado de autores por trimestre —
+          para garantir a qualidade que cada obra exige.
+        </p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <div class="service-num">01</div>
+          <h3 class="service-title">Ghostwriting<br>Completo</h3>
+          <p class="service-desc">Do briefing estratégico ao manuscrito finalizado. Realizamos entrevistas em profundidade, estruturamos o conteúdo e escrevemos com a sua voz — sem que você precise digitar uma linha.</p>
+          <p class="service-deliverable">Entrega: manuscrito revisado + estrutura editorial + orientação de lançamento</p>
+          <span class="service-price">A partir de R$ 7.500 · Projeto personalizado</span>
+          <a href="contato.html" class="service-cta">
+            Solicitar proposta
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M7 2l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-num">02</div>
+          <h3 class="service-title">Estruturação<br>Estratégica</h3>
+          <p class="service-desc">Ideal para quem já tem conteúdo produzido — mas sem coesão. Organizamos suas ideias em uma arquitetura narrativa clara, com sumário, posicionamento e proposta editorial definidos.</p>
+          <p class="service-deliverable">Entrega: sumário executivo + mapa narrativo + briefing para escrita</p>
+          <span class="service-price">A partir de R$ 4.500 · Projeto personalizado</span>
+          <a href="contato.html" class="service-cta">
+            Solicitar proposta
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M7 2l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-num">03</div>
+          <h3 class="service-title">Registro<br>Autoral</h3>
+          <p class="service-desc">ISBN, ficha catalográfica, Biblioteca Nacional e proteção de direitos autorais. Para autores que chegam com o manuscrito pronto e precisam da estrutura editorial para publicar com credibilidade.</p>
+          <p class="service-deliverable">Entrega: ISBN + ficha catalográfica + registro completo</p>
+          <span class="service-price">Incluído nos pacotes completos</span>
+          <a href="contato.html" class="service-cta">
+            Falar com a equipe
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M7 2l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ AUTHORITY ═══════════════ -->
+  <section class="authority" id="sobre">
+    <div class="authority-inner">
+      <div class="authority-stat reveal">
+        <div class="authority-num">+10</div>
+        <div class="authority-label">Anos de experiência editorial</div>
+        <p class="authority-desc">Desde 2013 desenvolvendo projetos de publicação para autores brasileiros de diferentes mercados e segmentos.</p>
+      </div>
+      <div class="authority-stat reveal">
+        <div class="authority-num">100%</div>
+        <div class="authority-label">Projetos com registro autoral completo</div>
+        <p class="authority-desc">Todos os livros publicados pela Brary saem com ISBN, ficha catalográfica e proteção legal garantidos.</p>
+      </div>
+      <div class="authority-stat reveal">
+        <div class="authority-num">Seleto</div>
+        <div class="authority-label">Número de projetos por trimestre</div>
+        <p class="authority-desc">Trabalhamos com poucos autores de cada vez — para que cada projeto receba a atenção que uma obra de valor exige.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ BOOKS ═══════════════ -->
+  <section class="books" id="livraria">
+    <div class="books-inner">
+      <div class="section-header">
+        <p class="section-eyebrow">Catálogo</p>
+        <h2 class="section-title reveal">Livros que são<br><em>ativos de autoridade</em></h2>
+        <div class="gold-rule"></div>
+        <p class="section-lead reveal">
+          Cada título publicado pela Brary é um projeto estratégico —
+          desenvolvido para posicionar o autor no seu mercado,
+          não apenas para existir em uma prateleira.
+        </p>
+      </div>
+      <div class="books-grid">
+        <div class="book-cover-wrap reveal">
+          <div class="book-cover">
+            <div class="book-cover-spine"></div>
+            <span class="book-cover-label">Brary Editora</span>
+            <div class="book-cover-title">Networker</div>
+            <div class="book-cover-author">Orlando Carvalho</div>
+          </div>
+          <div class="book-badge">Desta&shy;que<br>2024</div>
+        </div>
+        <div class="book-info reveal">
+          <p class="section-eyebrow">Em destaque</p>
+          <h3 class="section-title" style="color:var(--white); margin-bottom:0.5rem;">Networker</h3>
+          <p class="book-subtitle">
+            "Como criar conexões com propósito, ouvir com empatia
+            e ser lembrado por quem você realmente é"
+          </p>
+          <p class="book-desc">
+            Orlando Carvalho transforma sua metodologia de relacionamento em uma obra
+            de referência para líderes e profissionais que querem construir redes com
+            intenção — e ser reconhecidos por quem realmente são.
+          </p>
+          <div class="book-asset-note">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <circle cx="8" cy="8" r="7" stroke="#B8963E" stroke-width="1"/>
+              <path d="M8 5v3.5M8 11v.5" stroke="#B8963E" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+            <p>
+              <strong>Livro como ativo estratégico</strong>
+              Networker formalizou a autoridade de Orlando em um mercado que ele já dominava — e abriu oportunidades que o currículo nunca abriria.
+            </p>
+          </div>
+          <div class="book-author-line">
+            <div class="author-avatar">O</div>
+            <div>
+              <div class="author-name">Orlando Carvalho</div>
+              <div class="author-role">Especialista em Relações Estratégicas</div>
+            </div>
+          </div>
+          <a href="https://www.braryeditora.com/braryon" target="_blank" rel="noopener" class="btn-primary">Ver na livraria</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ INSTITUTIONAL STRIP ═══════════════ -->
+  <div class="institutional">
+    <div class="institutional-inner">
+      <p class="institutional-quote">
+        "Um livro bem posicionado abre portas que anos de currículo não conseguem —
+        porque ele faz por você <em>o que você não consegue fazer sozinho:</em>
+        estar presente sem estar na sala."
+      </p>
+      <p class="institutional-attr">— Princípio editorial da Brary, desde 2013</p>
+    </div>
+  </div>
+
+  <!-- ═══════════════ BLOG ═══════════════ -->
+  <section class="blog" id="blog">
+    <div class="blog-inner">
+      <div class="section-header">
+        <p class="section-eyebrow">Conteúdo editorial</p>
+        <h2 class="section-title reveal">Para quem está<br><em>pensando em publicar</em></h2>
+        <div class="gold-rule"></div>
+        <p class="section-lead reveal">
+          Perspectivas honestas sobre o processo de escrever, publicar
+          e usar um livro como instrumento de posicionamento estratégico.
+        </p>
+      </div>
+      <div class="blog-cards">
+        <a
+          href="https://www.linkedin.com/pulse/o-arquivo-ainda-est%C3%A1-l%C3%A1-brary-editora-fga7f"
+          target="_blank" rel="noopener"
+          class="blog-card reveal"
+        >
+          <span class="blog-tag">Reflexão editorial</span>
+          <h3 class="blog-title">O arquivo ainda está lá.</h3>
+          <p class="blog-excerpt">
+            Em algum lugar no seu computador existe um arquivo. Pode ser um documento do Word,
+            uma pasta de notas, um bloco de textos que você nunca terminou. Esse arquivo tem um nome —
+            e esse nome costuma ser o título de um livro que você ainda não escreveu.
+          </p>
+          <span class="blog-link">
+            Ler no LinkedIn
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M1 7h12M8 3l5 4-5 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+        </a>
+        <div class="blog-card reveal dimmed">
+          <span class="blog-tag">Em breve</span>
+          <h3 class="blog-title">Por que especialistas precisam de um livro — não de mais posts.</h3>
+          <p class="blog-excerpt">A lógica da autoridade no mercado atual e por que o livro continua sendo o único formato que nenhum algoritmo pode depreciar.</p>
+          <span class="blog-link">Em breve</span>
+        </div>
+        <div class="blog-card reveal dimmed">
+          <span class="blog-tag">Em breve</span>
+          <h3 class="blog-title">Ghostwriting não é terceirizar a sua voz. É amplificá-la.</h3>
+          <p class="blog-excerpt">O que um ghostwriter faz, como funciona o processo e por que os maiores nomes do mercado editorial usam esse recurso há décadas.</p>
+          <span class="blog-link">Em breve</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ CTA BAND ═══════════════ -->
+  <section class="cta-band">
+    <p class="cta-eyebrow">Próximo passo</p>
+    <h2 class="cta-title">
+      Seu livro pode existir.<br>
+      <em>A decisão é agora.</em>
+    </h2>
+    <p class="cta-sub">
+      Agende uma conversa gratuita com nossa equipe editorial.
+      Em 30 minutos você entende se a Brary é o caminho certo
+      para o seu projeto — sem compromisso.
+    </p>
+    <a href="contato.html" class="btn-primary">Agendar conversa gratuita</a>
+    <div class="cta-urgency">
+      <span class="cta-urgency-item">Vagas limitadas por trimestre</span>
+      <span class="cta-urgency-item">Projetos selecionados individualmente</span>
+      <span class="cta-urgency-item">Atendimento direto com a equipe</span>
+    </div>
+  </section>
+
+  <!-- ═══════════════ FOOTER ═══════════════ -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div>
+          <!-- Substitua logo-branca.png pela logo com fundo transparente -->
+          <img src="logo-branca.png" alt="Brary Editora" class="footer-logo" />
+          <div class="footer-brand-tag">Ghostwriting &amp; Publicação Estratégica</div>
+          <p class="footer-brand-desc">
+            Trabalhamos com pessoas que têm muito a dizer — e que entendem
+            que um livro bem feito é o investimento de posicionamento
+            com o maior retorno de longo prazo.
+          </p>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Navegação</div>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="https://www.braryeditora.com/braryon" target="_blank" rel="noopener">Livraria</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contato.html">Contato</a></li>
+            <li><a href="https://brary-institute-site.vercel.app" target="_blank" rel="noopener">Brary Institute ↗</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Serviços</div>
+          <ul>
+            <li><a href="contato.html">Ghostwriting Completo</a></li>
+            <li><a href="contato.html">Estruturação Estratégica</a></li>
+            <li><a href="contato.html">Registro Autoral</a></li>
+            <li><a href="https://www.braryeditora.com/braryon" target="_blank" rel="noopener">Catálogo de Livros</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">© 2025 braryeditora.com.br — Todos os direitos reservados</p>
+        <a href="https://ghostwriting-six.vercel.app/" target="_blank" rel="noopener" class="footer-credit">
+          Ghostwriting por Orlando Carvalho ↗
+        </a>
+        <p class="footer-est">Est. 2013</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ── Nav: toggle mobile menu ──────────────────────────────────
+    const toggle = document.getElementById('navToggle');
+    const menu   = document.getElementById('navMenu');
+    const nav    = document.getElementById('nav');
+
+    toggle.addEventListener('click', () => {
+      toggle.classList.toggle('open');
+      menu.classList.toggle('open');
+    });
+
+    // Fecha o menu ao clicar em qualquer link interno
+    menu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        toggle.classList.remove('open');
+        menu.classList.remove('open');
+      });
+    });
+
+    // ── Nav: sombra ao rolar ─────────────────────────────────────
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 10);
+    }, { passive: true });
+
+    // ── Scroll reveal ────────────────────────────────────────────
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  </script>
+
+</body>
+</html>
