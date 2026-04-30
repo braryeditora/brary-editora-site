@@ -126,13 +126,46 @@
     .post-video-label::after { content: ''; flex: 1; height: 1px; background: var(--gold-dim); }
     .post-video-wrap {
       position: relative; width: 100%; padding-bottom: 56.25%;
-      background: var(--navy-deep); overflow: hidden;
+      background: var(--navy); overflow: hidden;
+      cursor: pointer;
     }
     .post-video-wrap iframe {
       position: absolute; top: 0; left: 0;
       width: 100%; height: 100%;
       border: none;
     }
+    /* Capa editorial sobre o vídeo */
+    .video-cover {
+      position: absolute; inset: 0; z-index: 2;
+      background: var(--navy);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 1.5rem;
+      transition: opacity .4s ease;
+      cursor: pointer;
+    }
+    .video-cover.hidden { opacity: 0; pointer-events: none; }
+    .video-cover-label {
+      font-size: 0.6rem; font-weight: 500; letter-spacing: 0.28em;
+      text-transform: uppercase; color: var(--gold); text-align: center;
+    }
+    .video-cover-title {
+      font-family: var(--serif); font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+      font-weight: 300; color: var(--white);
+      text-align: center; line-height: 1.3;
+      max-width: 380px; padding: 0 1rem;
+    }
+    .video-cover-title em { font-style: italic; color: var(--gold-light); }
+    .video-play-btn {
+      width: 64px; height: 64px; border-radius: 50%;
+      border: 1.5px solid var(--gold);
+      display: flex; align-items: center; justify-content: center;
+      transition: background .3s, transform .3s;
+    }
+    .video-cover:hover .video-play-btn {
+      background: var(--gold); transform: scale(1.08);
+    }
+    .video-cover-rule { width: 40px; height: 1px; background: var(--gold); }
 
     /* CTA */
     .post-cta {
@@ -327,13 +360,33 @@
     <!-- Vídeo de depoimentos -->
     <div class="post-video reveal">
       <p class="post-video-label">O que dizem os autores</p>
-      <div class="post-video-wrap">
+      <div class="post-video-wrap" id="videoWrap">
+
+        <!-- Capa editorial -->
+        <div class="video-cover" id="videoCover" onclick="playVideo()">
+          <div class="video-cover-rule"></div>
+          <p class="video-cover-label">Depoimentos · 4 autores</p>
+          <p class="video-cover-title">
+            O que muda quando<br>
+            <em>o livro finalmente existe.</em>
+          </p>
+          <div class="video-play-btn">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+              <path d="M8 5.5l10 5.5-10 5.5V5.5z" fill="#B8963E"/>
+            </svg>
+          </div>
+          <div class="video-cover-rule"></div>
+        </div>
+
+        <!-- Player -->
         <iframe
-          src="https://www.youtube.com/embed/MO18mhWxj-o?rel=0&modestbranding=1&color=white"
+          id="ytPlayer"
+          src="https://www.youtube.com/embed/MO18mhWxj-o?rel=0&modestbranding=1&enablejsapi=1"
           title="Depoimentos de autores — Brary Editora"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen>
         </iframe>
+
       </div>
     </div>
 
@@ -426,6 +479,13 @@
       entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
     }, { threshold: 0.08 });
     document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    function playVideo() {
+      const cover = document.getElementById('videoCover');
+      const player = document.getElementById('ytPlayer');
+      cover.classList.add('hidden');
+      player.src += '&autoplay=1';
+    }
   </script>
 </body>
 </html>
