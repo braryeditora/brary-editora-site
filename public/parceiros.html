@@ -1,30 +1,44 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Programa de Parceiros — Brary Editora</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap"
+    rel="stylesheet" />
   <style>
     :root {
-      --navy:        #0B1120;
-      --navy-mid:    #111827;
-      --navy-light:  #1A2540;
-      --navy-card:   #141E33;
-      --gold:        #C9A84C;
-      --gold-light:  #E2C67A;
-      --gold-dim:    rgba(201,168,76,0.18);
-      --gold-border: rgba(201,168,76,0.30);
-      --text:        #EDE8DE;
-      --text-muted:  #9BA3B2;
-      --white:       #FFFFFF;
-      --serif:       'Cormorant Garamond', Georgia, serif;
-      --sans:        'Jost', system-ui, sans-serif;
+      --navy: #0B1120;
+      --navy-mid: #111827;
+      --navy-light: #1A2540;
+      --navy-card: #141E33;
+      --gold: #C9A84C;
+      --gold-light: #E2C67A;
+      --gold-dim: rgba(201, 168, 76, 0.18);
+      --gold-border: rgba(201, 168, 76, 0.30);
+      --text: #EDE8DE;
+      --text-muted: #9BA3B2;
+      --white: #FFFFFF;
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'Jost', system-ui, sans-serif;
     }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       background: var(--navy);
       color: var(--text);
@@ -36,172 +50,305 @@
 
     /* ─── NAV ─── */
     nav {
-      position: sticky; top: 0; z-index: 100;
-      background: rgba(11,17,32,0.92);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(11, 17, 32, 0.92);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--gold-border);
       padding: 0 clamp(1.5rem, 5vw, 4rem);
     }
+
     .nav-inner {
-      max-width: 1200px; margin: 0 auto;
-      display: flex; align-items: center;
-      justify-content: space-between; height: 68px;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
     }
+
     .nav-logo {
-      font-family: var(--serif); font-size: 1.55rem;
-      font-weight: 600; color: var(--gold);
-      text-decoration: none; letter-spacing: 0.04em;
+      font-family: var(--serif);
+      font-size: 1.55rem;
+      font-weight: 600;
+      color: var(--gold);
+      text-decoration: none;
+      letter-spacing: 0.04em;
     }
-    .nav-logo span { color: var(--text); font-weight: 400; }
-    .nav-links { display: flex; gap: 2rem; list-style: none; }
+
+    .nav-logo span {
+      color: var(--text);
+      font-weight: 400;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
     .nav-links a {
-      font-family: var(--sans); font-size: 0.8rem;
-      font-weight: 500; letter-spacing: 0.12em;
-      text-transform: uppercase; color: var(--text-muted);
-      text-decoration: none; transition: color 0.25s;
+      font-family: var(--sans);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.25s;
     }
-    .nav-links a:hover { color: var(--gold); }
+
+    .nav-links a:hover {
+      color: var(--gold);
+    }
+
     .nav-cta {
-      font-size: 0.78rem; font-weight: 500;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--navy) !important; background: var(--gold);
-      padding: 0.5rem 1.2rem; border-radius: 2px;
-      text-decoration: none; transition: background 0.25s;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--navy) !important;
+      background: var(--gold);
+      padding: 0.5rem 1.2rem;
+      border-radius: 2px;
+      text-decoration: none;
+      transition: background 0.25s;
     }
-    .nav-cta:hover { background: var(--gold-light) !important; color: var(--navy) !important; }
+
+    .nav-cta:hover {
+      background: var(--gold-light) !important;
+      color: var(--navy) !important;
+    }
+
     .nav-hamburger {
-      display: none; flex-direction: column; gap: 5px;
-      cursor: pointer; background: none; border: none; padding: 4px;
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
     }
+
     .nav-hamburger span {
-      display: block; width: 24px; height: 2px;
-      background: var(--gold); border-radius: 2px;
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--gold);
+      border-radius: 2px;
       transition: transform 0.3s, opacity 0.3s;
     }
 
     /* ─── HERO ─── */
     .hero {
-      position: relative; overflow: hidden;
+      position: relative;
+      overflow: hidden;
       padding: clamp(5rem, 12vw, 9rem) clamp(1.5rem, 5vw, 4rem);
     }
+
     .hero::before {
       content: '';
-      position: absolute; inset: 0;
-      background: radial-gradient(ellipse 90% 60% at 50% 0%, rgba(201,168,76,0.07) 0%, transparent 70%);
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 90% 60% at 50% 0%, rgba(201, 168, 76, 0.07) 0%, transparent 70%);
       pointer-events: none;
     }
+
     /* decorative large roman numeral */
     .hero-bg-text {
-      position: absolute; right: -1rem; top: 50%;
+      position: absolute;
+      right: -1rem;
+      top: 50%;
       transform: translateY(-50%);
       font-family: var(--serif);
       font-size: clamp(12rem, 22vw, 20rem);
       font-weight: 700;
-      color: rgba(201,168,76,0.04);
+      color: rgba(201, 168, 76, 0.04);
       line-height: 1;
       pointer-events: none;
       user-select: none;
     }
+
     .hero-inner {
-      max-width: 1200px; margin: 0 auto;
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 4rem; align-items: center; position: relative;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      position: relative;
     }
+
     .hero-ornament {
-      display: block; width: 48px; height: 2px;
+      display: block;
+      width: 48px;
+      height: 2px;
       background: linear-gradient(90deg, var(--gold), transparent);
       margin-bottom: 1.8rem;
     }
+
     .hero-label {
-      font-family: var(--sans); font-size: 0.72rem;
-      font-weight: 500; letter-spacing: 0.22em;
-      text-transform: uppercase; color: var(--gold);
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
       margin-bottom: 1.2rem;
     }
+
     .hero h1 {
       font-family: var(--serif);
       font-size: clamp(2.2rem, 5vw, 3.8rem);
-      font-weight: 600; line-height: 1.15;
-      color: var(--white); margin-bottom: 1.5rem;
+      font-weight: 600;
+      line-height: 1.15;
+      color: var(--white);
+      margin-bottom: 1.5rem;
     }
-    .hero h1 em { font-style: italic; color: var(--gold-light); }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--gold-light);
+    }
+
     .hero-sub {
       font-size: clamp(0.95rem, 1.8vw, 1.08rem);
-      color: var(--text-muted); margin-bottom: 2.5rem;
-      font-weight: 300; max-width: 480px;
+      color: var(--text-muted);
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+      max-width: 480px;
     }
+
     .hero-cta {
-      display: inline-block; font-family: var(--sans);
-      font-size: 0.82rem; font-weight: 600;
-      letter-spacing: 0.12em; text-transform: uppercase;
-      color: var(--navy); background: var(--gold);
-      padding: 0.9rem 2.4rem; border-radius: 2px;
-      text-decoration: none; cursor: pointer;
+      display: inline-block;
+      font-family: var(--sans);
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--navy);
+      background: var(--gold);
+      padding: 0.9rem 2.4rem;
+      border-radius: 2px;
+      text-decoration: none;
+      cursor: pointer;
       transition: background 0.25s, transform 0.2s;
     }
-    .hero-cta:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+    .hero-cta:hover {
+      background: var(--gold-light);
+      transform: translateY(-1px);
+    }
+
     .hero-stat-box {
       background: var(--navy-card);
       border: 1px solid var(--gold-border);
-      border-radius: 4px; padding: 2.5rem 2rem;
-      text-align: center; position: relative;
+      border-radius: 4px;
+      padding: 2.5rem 2rem;
+      text-align: center;
+      position: relative;
     }
+
     .hero-stat-box::before {
       content: '';
-      position: absolute; top: 0; left: 50%;
+      position: absolute;
+      top: 0;
+      left: 50%;
       transform: translateX(-50%);
-      width: 40%; height: 2px;
+      width: 40%;
+      height: 2px;
       background: linear-gradient(90deg, transparent, var(--gold), transparent);
     }
+
     .stat-number {
       font-family: var(--serif);
-      font-size: 4.5rem; font-weight: 700;
-      color: var(--gold); line-height: 1;
+      font-size: 4.5rem;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
       margin-bottom: 0.4rem;
     }
+
     .stat-label {
-      font-size: 0.8rem; font-weight: 500;
-      letter-spacing: 0.14em; text-transform: uppercase;
-      color: var(--text-muted); margin-bottom: 1.5rem;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
     }
+
     .stat-desc {
-      font-family: var(--serif); font-size: 1.1rem;
-      font-style: italic; color: var(--text);
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-style: italic;
+      color: var(--text);
       line-height: 1.55;
     }
 
     /* ─── DIVIDER ─── */
     .divider {
-      display: flex; align-items: center; gap: 1rem;
-      max-width: 1200px; margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      max-width: 1200px;
+      margin: 0 auto;
       padding: 0 clamp(1.5rem, 5vw, 4rem);
     }
-    .divider::before, .divider::after {
-      content: ''; flex: 1; height: 1px;
+
+    .divider::before,
+    .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
       background: var(--gold-border);
     }
+
     .divider-icon {
-      width: 8px; height: 8px;
-      background: var(--gold); transform: rotate(45deg);
+      width: 8px;
+      height: 8px;
+      background: var(--gold);
+      transform: rotate(45deg);
     }
 
     /* ─── SECTION GENERIC ─── */
-    section { padding: clamp(3.5rem, 8vw, 6rem) clamp(1.5rem, 5vw, 4rem); }
-    .section-inner { max-width: 1200px; margin: 0 auto; }
-    .section-label {
-      font-size: 0.7rem; font-weight: 500;
-      letter-spacing: 0.22em; text-transform: uppercase;
-      color: var(--gold); margin-bottom: 0.8rem;
+    section {
+      padding: clamp(3.5rem, 8vw, 6rem) clamp(1.5rem, 5vw, 4rem);
     }
+
+    .section-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.8rem;
+    }
+
     .section-title {
       font-family: var(--serif);
       font-size: clamp(1.9rem, 4vw, 2.8rem);
-      font-weight: 600; color: var(--white); margin-bottom: 1rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 1rem;
     }
-    .section-title em { font-style: italic; color: var(--gold-light); }
+
+    .section-title em {
+      font-style: italic;
+      color: var(--gold-light);
+    }
 
     /* ─── HOW IT WORKS ─── */
-    .how-section { background: var(--navy-light); }
+    .how-section {
+      background: var(--navy-light);
+    }
+
     .steps {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -209,47 +356,71 @@
       margin-top: 3.5rem;
       position: relative;
     }
+
     .steps::before {
       content: '';
       position: absolute;
-      top: 2.8rem; left: 10%; right: 10%;
+      top: 2.8rem;
+      left: 10%;
+      right: 10%;
       height: 1px;
       background: linear-gradient(90deg, transparent, var(--gold-border) 20%, var(--gold-border) 80%, transparent);
     }
+
     .step {
       text-align: center;
       padding: 0 1.5rem 2.5rem;
       position: relative;
     }
+
     .step-num {
-      display: inline-flex; align-items: center; justify-content: center;
-      width: 56px; height: 56px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 56px;
+      height: 56px;
       border: 1px solid var(--gold);
       border-radius: 50%;
-      font-family: var(--serif); font-size: 1.5rem;
-      font-weight: 600; color: var(--gold);
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--gold);
       background: var(--navy-light);
       margin: 0 auto 1.5rem;
-      position: relative; z-index: 1;
+      position: relative;
+      z-index: 1;
     }
+
     .step h3 {
-      font-family: var(--serif); font-size: 1.2rem;
-      font-weight: 600; color: var(--white);
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--white);
       margin-bottom: 0.6rem;
     }
-    .step p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.65; }
+
+    .step p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+
     .step-arrow {
       display: none;
     }
 
     /* ─── PROFILE ─── */
-    .profile-section { background: var(--navy); }
+    .profile-section {
+      background: var(--navy);
+    }
+
     .profile-cards {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 1.2rem;
       margin-top: 3rem;
     }
+
     .profile-card {
       background: var(--navy-card);
       border: 1px solid var(--gold-border);
@@ -257,13 +428,30 @@
       padding: 1.8rem 1.5rem;
       transition: border-color 0.3s, transform 0.25s;
     }
-    .profile-card:hover { border-color: var(--gold); transform: translateY(-3px); }
-    .profile-icon { font-size: 1.8rem; margin-bottom: 0.8rem; }
-    .profile-card h3 {
-      font-family: var(--serif); font-size: 1.1rem;
-      font-weight: 600; color: var(--white); margin-bottom: 0.4rem;
+
+    .profile-card:hover {
+      border-color: var(--gold);
+      transform: translateY(-3px);
     }
-    .profile-card p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; }
+
+    .profile-icon {
+      font-size: 1.8rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .profile-card h3 {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 0.4rem;
+    }
+
+    .profile-card p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
 
     /* ─── COMMISSION HIGHLIGHT ─── */
     .commission-block {
@@ -277,87 +465,196 @@
       gap: 3rem;
       align-items: center;
     }
+
     .commission-num {
       text-align: center;
     }
+
     .commission-pct {
-      font-family: var(--serif); font-size: 6rem;
-      font-weight: 700; color: var(--gold);
+      font-family: var(--serif);
+      font-size: 6rem;
+      font-weight: 700;
+      color: var(--gold);
       line-height: 0.9;
     }
-    .commission-pct span { font-size: 3rem; }
+
+    .commission-pct span {
+      font-size: 3rem;
+    }
+
     .commission-tag {
-      font-size: 0.72rem; letter-spacing: 0.18em;
-      text-transform: uppercase; color: var(--text-muted);
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-muted);
       margin-top: 0.5rem;
     }
+
     .commission-details h3 {
-      font-family: var(--serif); font-size: 1.8rem;
-      font-weight: 600; color: var(--white);
+      font-family: var(--serif);
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: var(--white);
       margin-bottom: 1rem;
     }
-    .commission-details h3 em { font-style: italic; color: var(--gold-light); }
-    .commission-details p {
-      font-size: 0.92rem; color: var(--text-muted);
-      line-height: 1.75; margin-bottom: 0.8rem;
+
+    .commission-details h3 em {
+      font-style: italic;
+      color: var(--gold-light);
     }
-    .commission-details p:last-child { margin-bottom: 0; }
-    .commission-details strong { color: var(--text); font-weight: 500; }
+
+    .commission-details p {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      line-height: 1.75;
+      margin-bottom: 0.8rem;
+    }
+
+    .commission-details p:last-child {
+      margin-bottom: 0;
+    }
+
+    .commission-details strong {
+      color: var(--text);
+      font-weight: 500;
+    }
 
     /* ─── FORM ─── */
-    .form-section { background: var(--navy); }
-    .form-wrapper { max-width: 700px; margin: 3rem auto 0; }
-    .form-intro { text-align: center; margin-bottom: 3rem; }
+    .form-section {
+      background: var(--navy);
+    }
+
+    .form-wrapper {
+      max-width: 700px;
+      margin: 3rem auto 0;
+    }
+
+    .form-intro {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
     .form-intro p {
-      color: var(--text-muted); font-size: 0.95rem;
-      max-width: 520px; margin: 0.8rem auto 0;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      max-width: 520px;
+      margin: 0.8rem auto 0;
     }
-    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
-    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
-    .form-group.full { grid-column: 1 / -1; }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .form-group.full {
+      grid-column: 1 / -1;
+    }
+
     label {
-      font-size: 0.72rem; font-weight: 500;
-      letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
     }
-    input, select, textarea {
+
+    input,
+    select,
+    textarea {
       background: var(--navy-card);
       border: 1px solid var(--gold-border);
-      border-radius: 3px; color: var(--text);
-      font-family: var(--sans); font-size: 0.92rem;
-      font-weight: 300; padding: 0.75rem 1rem;
-      outline: none; transition: border-color 0.25s, box-shadow 0.25s; width: 100%;
+      border-radius: 3px;
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 0.92rem;
+      font-weight: 300;
+      padding: 0.75rem 1rem;
+      outline: none;
+      transition: border-color 0.25s, box-shadow 0.25s;
+      width: 100%;
     }
-    input::placeholder, textarea::placeholder { color: rgba(155,163,178,0.5); }
-    input:focus, select:focus, textarea:focus {
+
+    input::placeholder,
+    textarea::placeholder {
+      color: rgba(155, 163, 178, 0.5);
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
       border-color: var(--gold);
-      box-shadow: 0 0 0 3px rgba(201,168,76,0.10);
+      box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.10);
     }
+
     select {
       appearance: none;
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23C9A84C' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-      background-repeat: no-repeat; background-position: right 1rem center;
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
       padding-right: 2.5rem;
     }
-    select option { background: var(--navy-card); color: var(--text); }
-    textarea { resize: vertical; min-height: 110px; }
-    .form-submit { text-align: center; margin-top: 2rem; }
-    .btn-primary {
-      display: inline-block; font-family: var(--sans);
-      font-size: 0.82rem; font-weight: 600;
-      letter-spacing: 0.14em; text-transform: uppercase;
-      color: var(--navy); background: var(--gold);
-      border: none; padding: 1rem 3rem; border-radius: 2px;
-      cursor: pointer; transition: background 0.25s, transform 0.2s;
+
+    select option {
+      background: var(--navy-card);
+      color: var(--text);
     }
-    .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
-    .form-note { margin-top: 1rem; font-size: 0.78rem; color: var(--text-muted); }
+
+    textarea {
+      resize: vertical;
+      min-height: 110px;
+    }
+
+    .form-submit {
+      text-align: center;
+      margin-top: 2rem;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      font-family: var(--sans);
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--navy);
+      background: var(--gold);
+      border: none;
+      padding: 1rem 3rem;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: background 0.25s, transform 0.2s;
+    }
+
+    .btn-primary:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+    }
+
+    .form-note {
+      margin-top: 1rem;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
     .success-msg {
       display: none;
-      background: var(--gold-dim); border: 1px solid var(--gold-border);
-      border-radius: 4px; padding: 1.5rem 2rem;
-      text-align: center; margin-top: 1.5rem;
-      color: var(--gold-light); font-family: var(--serif);
-      font-size: 1.1rem; font-style: italic;
+      background: var(--gold-dim);
+      border: 1px solid var(--gold-border);
+      border-radius: 4px;
+      padding: 1.5rem 2rem;
+      text-align: center;
+      margin-top: 1.5rem;
+      color: var(--gold-light);
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-style: italic;
     }
 
     /* ─── FOOTER ─── */
@@ -366,313 +663,442 @@
       border-top: 1px solid var(--gold-border);
       padding: 3.5rem clamp(1.5rem, 5vw, 4rem) 2rem;
     }
-    .footer-inner { max-width: 1200px; margin: 0 auto; }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
     .footer-top {
-      display: grid; grid-template-columns: 2fr 1fr 1fr;
-      gap: 3rem; padding-bottom: 2.5rem;
-      border-bottom: 1px solid var(--gold-border); margin-bottom: 2rem;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid var(--gold-border);
+      margin-bottom: 2rem;
     }
+
     .footer-brand h3 {
-      font-family: var(--serif); font-size: 1.4rem;
-      font-weight: 600; color: var(--gold); margin-bottom: 0.7rem;
+      font-family: var(--serif);
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--gold);
+      margin-bottom: 0.7rem;
     }
+
     .footer-brand p {
-      font-size: 0.88rem; color: var(--text-muted);
-      line-height: 1.7; max-width: 280px;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      max-width: 280px;
     }
+
     .footer-col h4 {
-      font-size: 0.7rem; font-weight: 500;
-      letter-spacing: 0.18em; text-transform: uppercase;
-      color: var(--gold); margin-bottom: 1rem;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
     }
-    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
     .footer-col a {
-      font-size: 0.88rem; color: var(--text-muted);
-      text-decoration: none; transition: color 0.2s;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
     }
-    .footer-col a:hover { color: var(--gold); }
+
+    .footer-col a:hover {
+      color: var(--gold);
+    }
+
     .footer-bottom {
-      display: flex; justify-content: space-between;
-      align-items: center; flex-wrap: wrap; gap: 0.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
     }
-    .footer-bottom p { font-size: 0.78rem; color: var(--text-muted); }
-    .footer-bottom a { color: var(--gold); text-decoration: none; }
+
+    .footer-bottom p {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .footer-bottom a {
+      color: var(--gold);
+      text-decoration: none;
+    }
 
     /* ─── RESPONSIVE ─── */
     @media (max-width: 900px) {
-      .hero-inner { grid-template-columns: 1fr; }
-      .hero-stat-box { max-width: 400px; }
-      .commission-block { grid-template-columns: 1fr; }
-    }
-    @media (max-width: 768px) {
-      .nav-links { display: none; }
-      .nav-links.open {
-        display: flex; flex-direction: column; gap: 0;
-        position: absolute; top: 68px; left: 0; right: 0;
-        background: var(--navy-mid);
-        border-bottom: 1px solid var(--gold-border); padding: 1rem 0;
+      .hero-inner {
+        grid-template-columns: 1fr;
       }
-      .nav-links.open li { padding: 0.6rem 1.5rem; }
-      .nav-hamburger { display: flex; }
-      .nav-cta { display: none; }
-      nav { position: relative; }
-      .steps { grid-template-columns: 1fr; }
-      .steps::before { display: none; }
-      .form-grid { grid-template-columns: 1fr; }
-      .form-group.full { grid-column: 1; }
-      .footer-top { grid-template-columns: 1fr; gap: 2rem; }
-      .footer-bottom { flex-direction: column; text-align: center; }
+
+      .hero-stat-box {
+        max-width: 400px;
+      }
+
+      .commission-block {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        position: absolute;
+        top: 68px;
+        left: 0;
+        right: 0;
+        background: var(--navy-mid);
+        border-bottom: 1px solid var(--gold-border);
+        padding: 1rem 0;
+      }
+
+      .nav-links.open li {
+        padding: 0.6rem 1.5rem;
+      }
+
+      .nav-hamburger {
+        display: flex;
+      }
+
+      .nav-cta {
+        display: none;
+      }
+
+      nav {
+        position: relative;
+      }
+
+      .steps {
+        grid-template-columns: 1fr;
+      }
+
+      .steps::before {
+        display: none;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .form-group.full {
+        grid-column: 1;
+      }
+
+      .footer-top {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+      }
     }
 
     /* ─── ANIMATE ─── */
     .reveal {
-      opacity: 0; transform: translateY(24px);
+      opacity: 0;
+      transform: translateY(24px);
       transition: opacity 0.7s ease, transform 0.7s ease;
     }
-    .reveal.visible { opacity: 1; transform: none; }
-    .reveal-delay-1 { transition-delay: 0.1s; }
-    .reveal-delay-2 { transition-delay: 0.2s; }
-    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    .reveal-delay-1 {
+      transition-delay: 0.1s;
+    }
+
+    .reveal-delay-2 {
+      transition-delay: 0.2s;
+    }
+
+    .reveal-delay-3 {
+      transition-delay: 0.3s;
+    }
   </style>
 </head>
+
 <body>
 
-<!-- ── NAV ── -->
-<nav>
-  <div class="nav-inner">
-    <a href="index.html" class="nav-logo">Brary <span>Editora</span></a>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="index.html">Início</a></li>
-      <li><a href="index.html#servicos">Serviços</a></li>
-      <li><a href="revisores.html">Revisores</a></li>
-      <li><a href="parceiros.html">Parceiros</a></li>
-      <li><a href="index.html#contato" class="nav-cta">Publicar</a></li>
-    </ul>
-    <button class="nav-hamburger" id="hamburger" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
+  <!-- ── NAV ── -->
+  <nav>
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Brary <span>Editora</span></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Início</a></li>
+        <li><a href="index.html#servicos">Serviços</a></li>
+        <li><a href="revisores.html">Revisores</a></li>
+        <li><a href="parceiros.html">Parceiros</a></li>
+        <li><a href="index.html#contato" class="nav-cta">Publicar</a></li>
+      </ul>
+      <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section class="hero">
+    <div class="hero-bg-text">V</div>
+    <div class="hero-inner">
+      <div>
+        <span class="hero-ornament"></span>
+        <p class="hero-label">Programa de Parceiros</p>
+        <h1>Conecte <em>talentos</em><br />ao mundo editorial</h1>
+        <p class="hero-sub">Você convive com especialistas que têm histórias, métodos e conhecimentos que merecem ser
+          publicados. A Brary transforma esse encontro em oportunidade para todos — inclusive para você.</p>
+        <a href="#formulario" class="hero-cta">Quero ser parceiro</a>
+      </div>
+      <div class="hero-stat-box reveal">
+        <div class="stat-number">5<span style="font-size:2.8rem">%</span></div>
+        <div class="stat-label">Comissão por projeto fechado</div>
+        <p class="stat-desc">Uma indicação sua pode se transformar em um livro — e em renda recorrente para sua rede.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider">
+    <div class="divider-icon"></div>
   </div>
-</nav>
 
-<!-- ── HERO ── -->
-<section class="hero">
-  <div class="hero-bg-text">V</div>
-  <div class="hero-inner">
-    <div>
-      <span class="hero-ornament"></span>
-      <p class="hero-label">Programa de Parceiros</p>
-      <h1>Conecte <em>talentos</em><br />ao mundo editorial</h1>
-      <p class="hero-sub">Você convive com especialistas que têm histórias, métodos e conhecimentos que merecem ser publicados. A Brary transforma esse encontro em oportunidade para todos — inclusive para você.</p>
-      <a href="#formulario" class="hero-cta">Quero ser parceiro</a>
-    </div>
-    <div class="hero-stat-box reveal">
-      <div class="stat-number">5<span style="font-size:2.8rem">%</span></div>
-      <div class="stat-label">Comissão por projeto fechado</div>
-      <p class="stat-desc">Uma indicação sua pode se transformar em um livro — e em renda recorrente para sua rede.</p>
-    </div>
-  </div>
-</section>
-
-<div class="divider"><div class="divider-icon"></div></div>
-
-<!-- ── HOW IT WORKS ── -->
-<section class="how-section">
-  <div class="section-inner">
-    <p class="section-label reveal">Como funciona</p>
-    <h2 class="section-title reveal">Quatro passos, <em>resultado claro</em></h2>
-    <div class="steps">
-      <div class="step reveal">
-        <div class="step-num">1</div>
-        <h3>Indicação</h3>
-        <p>Você nos apresenta alguém com conhecimento ou método que merece virar livro ou produto editorial.</p>
-      </div>
-      <div class="step reveal reveal-delay-1">
-        <div class="step-num">2</div>
-        <h3>Reunião</h3>
-        <p>A Brary realiza uma reunião diagnóstica com o indicado, sem custo. Você não precisa se envolver nessa etapa.</p>
-      </div>
-      <div class="step reveal reveal-delay-2">
-        <div class="step-num">3</div>
-        <h3>Contrato</h3>
-        <p>Quando o projeto é aprovado e o contrato assinado, a indicação é registrada formalmente com seu nome.</p>
-      </div>
-      <div class="step reveal reveal-delay-3">
-        <div class="step-num">4</div>
-        <h3>Comissão</h3>
-        <p>Você recebe <strong style="color:var(--gold)">5%</strong> do valor do projeto após o fechamento — com transparência e documentação.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="divider"><div class="divider-icon"></div></div>
-
-<!-- ── PROFILE ── -->
-<section class="profile-section">
-  <div class="section-inner">
-    <p class="section-label reveal">Perfil ideal</p>
-    <h2 class="section-title reveal">Quem convive com<br /><em>especialistas</em></h2>
-    <div class="profile-cards">
-      <div class="profile-card reveal">
-        <div class="profile-icon">🎤</div>
-        <h3>Palestrantes</h3>
-        <p>Que circulam em eventos corporativos e conhecem líderes com experiência acumulada para publicar.</p>
-      </div>
-      <div class="profile-card reveal reveal-delay-1">
-        <div class="profile-icon">🧭</div>
-        <h3>Coaches e Mentores</h3>
-        <p>Que acompanham executivos em transformação — naturalmente em contato com quem tem método para ensinar.</p>
-      </div>
-      <div class="profile-card reveal reveal-delay-2">
-        <div class="profile-icon">🤝</div>
-        <h3>Consultores</h3>
-        <p>Que entram em organizações e identificam profissionais com know-how inédito guardado em gavetas.</p>
-      </div>
-      <div class="profile-card reveal reveal-delay-3">
-        <div class="profile-icon">🏢</div>
-        <h3>Profissionais de RH</h3>
-        <p>Que mapeiam talentos internos — facilitadores, líderes de T&D — com conteúdo publicável e audiência pronta.</p>
-      </div>
-    </div>
-
-    <!-- Commission highlight -->
-    <div class="commission-block reveal">
-      <div class="commission-num">
-        <div class="commission-pct">5<span>%</span></div>
-        <div class="commission-tag">do valor do projeto</div>
-      </div>
-      <div class="commission-details">
-        <h3>Uma parceria <em>que faz sentido</em></h3>
-        <p>A Brary não é uma plataforma de afiliados — é uma <strong>parceria editorial de longo prazo</strong>. Cada indicação bem-sucedida fortalece sua reputação no ecossistema de publicação, além de gerar renda real.</p>
-        <p>O processo é transparente: você indica, nós cuidamos de tudo — briefing, edição, design, distribuição. Quando o contrato fecha, você recebe. <strong>Sem burocracias, sem cobranças.</strong></p>
-        <p>Não há meta de indicações, nem vínculo empregatício. Você atua no seu ritmo, com quem faz sentido na sua rede.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="divider"><div class="divider-icon"></div></div>
-
-<!-- ── FORM ── -->
-<section class="form-section" id="formulario">
-  <div class="section-inner">
-    <div class="form-intro">
-      <p class="section-label reveal">Inscrição</p>
-      <h2 class="section-title reveal">Faça parte da <em>nossa rede</em></h2>
-      <p class="reveal">Preencha o formulário abaixo. Nossa equipe entrará em contato para apresentar o programa completo e responder suas dúvidas.</p>
-    </div>
-    <div class="form-wrapper">
-      <form id="parceirosForm" onsubmit="handleSubmit(event)">
-        <div class="form-grid">
-          <div class="form-group full">
-            <label for="nome">Nome completo *</label>
-            <input type="text" id="nome" name="nome" placeholder="Seu nome completo" required />
-          </div>
-          <div class="form-group">
-            <label for="email">E-mail *</label>
-            <input type="email" id="email" name="email" placeholder="seu@email.com" required />
-          </div>
-          <div class="form-group">
-            <label for="telefone">Telefone / WhatsApp *</label>
-            <input type="tel" id="telefone" name="telefone" placeholder="(11) 99999-0000" required />
-          </div>
-          <div class="form-group full">
-            <label for="atuacao">Área de atuação *</label>
-            <select id="atuacao" name="atuacao" required>
-              <option value="" disabled selected>Como você atua no mercado?</option>
-              <option>Coach / Mentor</option>
-              <option>Consultor</option>
-              <option>Palestrante</option>
-              <option>Profissional de RH / T&D</option>
-              <option>Educador / Treinador</option>
-              <option>Empreendedor</option>
-              <option>Jornalista / Comunicador</option>
-              <option>Outro</option>
-            </select>
-          </div>
-          <div class="form-group full">
-            <label for="indicacao">Como pretende indicar clientes? *</label>
-            <textarea id="indicacao" name="indicacao" placeholder="Conte sobre seu perfil de rede, com que tipo de especialista você costuma trabalhar e como imagina fazer as indicações..." required></textarea>
-          </div>
+  <!-- ── HOW IT WORKS ── -->
+  <section class="how-section">
+    <div class="section-inner">
+      <p class="section-label reveal">Como funciona</p>
+      <h2 class="section-title reveal">Quatro passos, <em>resultado claro</em></h2>
+      <div class="steps">
+        <div class="step reveal">
+          <div class="step-num">1</div>
+          <h3>Indicação</h3>
+          <p>Você nos apresenta alguém com conhecimento ou método que merece virar livro ou produto editorial.</p>
         </div>
-        <div class="form-submit">
-          <button type="submit" class="btn-primary">Enviar inscrição</button>
-          <p class="form-note">Campos com * são obrigatórios. Retornamos em até 3 dias úteis.</p>
+        <div class="step reveal reveal-delay-1">
+          <div class="step-num">2</div>
+          <h3>Reunião</h3>
+          <p>A Brary realiza uma reunião diagnóstica com o indicado, sem custo. Você não precisa se envolver nessa
+            etapa.</p>
         </div>
-      </form>
-      <div class="success-msg" id="successMsg">
-        ✦ &nbsp;Inscrição recebida! Nossa equipe de parcerias entrará em contato em breve.
+        <div class="step reveal reveal-delay-2">
+          <div class="step-num">3</div>
+          <h3>Contrato</h3>
+          <p>Quando o projeto é aprovado e o contrato assinado, a indicação é registrada formalmente com seu nome.</p>
+        </div>
+        <div class="step reveal reveal-delay-3">
+          <div class="step-num">4</div>
+          <h3>Comissão</h3>
+          <p>Você recebe <strong style="color:var(--gold)">5%</strong> do valor do projeto após o fechamento — com
+            transparência e documentação.</p>
+        </div>
       </div>
     </div>
+  </section>
+
+  <div class="divider">
+    <div class="divider-icon"></div>
   </div>
-</section>
 
-<!-- ── FOOTER ── -->
-<footer>
-  <div class="footer-inner">
-    <div class="footer-top">
-      <div class="footer-brand">
-        <h3>Brary Editora</h3>
-        <p>Casa editorial e ecossistema de bastidores que transforma métodos e conhecimentos em livros, revistas e produtos com propósito.</p>
+  <!-- ── PROFILE ── -->
+  <section class="profile-section">
+    <div class="section-inner">
+      <p class="section-label reveal">Perfil ideal</p>
+      <h2 class="section-title reveal">Quem convive com<br /><em>especialistas</em></h2>
+      <div class="profile-cards">
+        <div class="profile-card reveal">
+          <div class="profile-icon">🎤</div>
+          <h3>Palestrantes</h3>
+          <p>Que circulam em eventos corporativos e conhecem líderes com experiência acumulada para publicar.</p>
+        </div>
+        <div class="profile-card reveal reveal-delay-1">
+          <div class="profile-icon">🧭</div>
+          <h3>Coaches e Mentores</h3>
+          <p>Que acompanham executivos em transformação — naturalmente em contato com quem tem método para ensinar.</p>
+        </div>
+        <div class="profile-card reveal reveal-delay-2">
+          <div class="profile-icon">🤝</div>
+          <h3>Consultores</h3>
+          <p>Que entram em organizações e identificam profissionais com know-how inédito guardado em gavetas.</p>
+        </div>
+        <div class="profile-card reveal reveal-delay-3">
+          <div class="profile-icon">🏢</div>
+          <h3>Profissionais de RH</h3>
+          <p>Que mapeiam talentos internos — facilitadores, líderes de T&D — com conteúdo publicável e audiência pronta.
+          </p>
+        </div>
       </div>
-      <div class="footer-col">
-        <h4>Navegação</h4>
-        <ul>
-          <li><a href="index.html">Início</a></li>
-          <li><a href="index.html#servicos">Serviços</a></li>
-          <li><a href="revisores.html">Revisores</a></li>
-          <li><a href="parceiros.html">Programa de Parceiros</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Contato</h4>
-        <ul>
-          <li><a href="mailto:editorial@braryeditora.com.br">editorial@braryeditora.com.br</a></li>
-          <li><a href="https://www.instagram.com/braryeditora" target="_blank">Instagram</a></li>
-          <li><a href="https://www.linkedin.com/company/braryeditora" target="_blank">LinkedIn</a></li>
-        </ul>
+
+      <!-- Commission highlight -->
+      <div class="commission-block reveal">
+        <div class="commission-num">
+          <div class="commission-pct">5<span>%</span></div>
+          <div class="commission-tag">do valor do projeto</div>
+        </div>
+        <div class="commission-details">
+          <h3>Uma parceria <em>que faz sentido</em></h3>
+          <p>A Brary não é uma plataforma de afiliados — é uma <strong>parceria editorial de longo prazo</strong>. Cada
+            indicação bem-sucedida fortalece sua reputação no ecossistema de publicação, além de gerar renda real.</p>
+          <p>O processo é transparente: você indica, nós cuidamos de tudo — briefing, edição, design, distribuição.
+            Quando o contrato fecha, você recebe. <strong>Sem burocracias, sem cobranças.</strong></p>
+          <p>Não há meta de indicações, nem vínculo empregatício. Você atua no seu ritmo, com quem faz sentido na sua
+            rede.</p>
+        </div>
       </div>
     </div>
-    <div class="footer-bottom">
-      <p>© 2025 Brary Editora — Todos os direitos reservados.</p>
-      <p>Criado por <a href="#">Orlando Carvalho</a></p>
-    </div>
+  </section>
+
+  <div class="divider">
+    <div class="divider-icon"></div>
   </div>
-</footer>
 
-<script>
-  const hamburger = document.getElementById('hamburger');
-  const navLinks  = document.getElementById('navLinks');
-  hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
+  <!-- ── FORM ── -->
+  <section class="form-section" id="formulario">
+    <div class="section-inner">
+      <div class="form-intro">
+        <p class="section-label reveal">Inscrição</p>
+        <h2 class="section-title reveal">Faça parte da <em>nossa rede</em></h2>
+        <p class="reveal">Preencha o formulário abaixo. Nossa equipe entrará em contato para apresentar o programa
+          completo e responder suas dúvidas.</p>
+      </div>
+      <div class="form-wrapper">
+        <form id="parceirosForm" onsubmit="handleSubmit(event)">
+          <div class="form-grid">
+            <div class="form-group full">
+              <label for="nome">Nome completo *</label>
+              <input type="text" id="nome" name="nome" placeholder="Seu nome completo" required />
+            </div>
+            <div class="form-group">
+              <label for="email">E-mail *</label>
+              <input type="email" id="email" name="email" placeholder="seu@email.com" required />
+            </div>
+            <div class="form-group">
+              <label for="telefone">Telefone / WhatsApp *</label>
+              <input type="tel" id="telefone" name="telefone" placeholder="(11) 99999-0000" required />
+            </div>
+            <div class="form-group full">
+              <label for="atuacao">Área de atuação *</label>
+              <select id="atuacao" name="atuacao" required>
+                <option value="" disabled selected>Como você atua no mercado?</option>
+                <option>Coach / Mentor</option>
+                <option>Consultor</option>
+                <option>Palestrante</option>
+                <option>Profissional de RH / T&D</option>
+                <option>Educador / Treinador</option>
+                <option>Empreendedor</option>
+                <option>Jornalista / Comunicador</option>
+                <option>Outro</option>
+              </select>
+            </div>
+            <div class="form-group full">
+              <label for="indicacao">Como pretende indicar clientes? *</label>
+              <textarea id="indicacao" name="indicacao"
+                placeholder="Conte sobre seu perfil de rede, com que tipo de especialista você costuma trabalhar e como imagina fazer as indicações..."
+                required></textarea>
+            </div>
+          </div>
+          <div class="form-submit">
+            <button type="submit" class="btn-primary">Enviar inscrição</button>
+            <p class="form-note">Campos com * são obrigatórios. Retornamos em até 3 dias úteis.</p>
+          </div>
+        </form>
+        <div class="success-msg" id="successMsg">
+          ✦ &nbsp;Inscrição recebida! Nossa equipe de parcerias entrará em contato em breve.
+        </div>
+      </div>
+    </div>
+  </section>
 
-  const reveals = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
-    });
-  }, { threshold: 0.12 });
-  reveals.forEach(r => observer.observe(r));
+  <!-- ── FOOTER ── -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <h3>Brary Editora</h3>
+          <p>Casa editorial e ecossistema de bastidores que transforma métodos e conhecimentos em livros, revistas e
+            produtos com propósito.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navegação</h4>
+          <ul>
+            <li><a href="index.html">Início</a></li>
+            <li><a href="index.html#servicos">Serviços</a></li>
+            <li><a href="revisores.html">Revisores</a></li>
+            <li><a href="parceiros.html">Programa de Parceiros</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contato</h4>
+          <ul>
+            <li><a href="mailto:editorial@braryeditora.com.br">editorial@braryeditora.com.br</a></li>
+            <li><a href="https://www.instagram.com/braryeditora" target="_blank">Instagram</a></li>
+            <li><a href="https://www.linkedin.com/company/braryeditora" target="_blank">LinkedIn</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 Brary Editora — Todos os direitos reservados.</p>
+        <p>Criado por <a href="#">Orlando Carvalho</a></p>
+      </div>
+    </div>
+  </footer>
 
-  async function handleSubmit(e) {
-    e.preventDefault();
-    const form = document.getElementById('parceirosForm');
-    const success = document.getElementById('successMsg');
-    const data = new FormData(form);
-    try {
-      const res = await fetch('https://formspree.io/f/xykozjnd', {
-        method: 'POST',
-        body: data,
-        headers: { Accept: 'application/json' }
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
+
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
       });
-      if (!res.ok) throw new Error('Erro no envio');
-    } catch (err) {
-      alert('Ocorreu um erro ao enviar. Tente novamente ou entre em contato por e-mail.');
-      return;
+    }, { threshold: 0.12 });
+    reveals.forEach(r => observer.observe(r));
+
+    async function handleSubmit(e) {
+      e.preventDefault();
+      const form = document.getElementById('parceirosForm');
+      const success = document.getElementById('successMsg');
+      const data = new FormData(form);
+      try {
+        data.append('access_key', '13ec6a80-7eda-47df-bad1-eae98d57246d');
+        data.append('subject', 'Novo Parceiro — Brary Editora');
+        const res = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          body: data,
+          headers: { Accept: 'application/json' }
+        });
+        if (!res.ok) throw new Error('Erro no envio');
+      } catch (err) {
+        alert('Ocorreu um erro ao enviar. Tente novamente ou entre em contato por e-mail.');
+        return;
+      }
+      form.style.display = 'none';
+      success.style.display = 'block';
+      success.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
-    form.style.display = 'none';
-    success.style.display = 'block';
-    success.scrollIntoView({ behavior: 'smooth', block: 'center' });
-  }
-</script>
+  </script>
 </body>
+
 </html>
