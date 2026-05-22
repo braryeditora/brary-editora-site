@@ -309,28 +309,79 @@
       pointer-events: none;
     }
 
-    /* LIVRO */
-    .book-section {
+    /* OBRAS */
+    .books-section {
       background: var(--cream);
       padding: 6rem 5vw;
     }
 
-    .book-inner {
+    .books-section-inner {
       max-width: var(--max-w);
       margin: 0 auto;
-      display: grid;
-      grid-template-columns: 320px 1fr;
-      gap: 5rem;
-      align-items: center;
     }
 
-    .book-mockup-wrap {
+    .books-header {
+      text-align: center;
+      margin-bottom: 5rem;
+    }
+
+    .books-eyebrow {
+      font-size: 0.62rem;
+      font-weight: 500;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .books-heading {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 300;
+      color: var(--navy);
+      line-height: 1.2;
+    }
+
+    .books-heading em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .book-entry {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 5rem;
+      align-items: center;
+      padding-bottom: 5rem;
+      margin-bottom: 5rem;
+      border-bottom: 1px solid rgba(184, 150, 62, 0.15);
+    }
+
+    .book-entry:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .book-entry--reverse {
+      grid-template-columns: 1fr 300px;
+    }
+
+    .book-entry--reverse .book-entry-cover {
+      order: 2;
+    }
+
+    .book-entry--reverse .book-entry-info {
+      order: 1;
+    }
+
+    .book-entry-cover {
       position: relative;
     }
 
     .book-mockup {
       width: 100%;
-      max-width: 320px;
+      max-width: 300px;
       display: block;
       filter: drop-shadow(0 24px 48px rgba(0, 0, 0, 0.22));
       transition: transform .5s ease;
@@ -340,7 +391,7 @@
       transform: translateY(-8px) rotate(1deg);
     }
 
-    .book-info {}
+    .book-entry-info {}
 
     .book-eyebrow {
       font-size: 0.62rem;
@@ -353,10 +404,19 @@
 
     .book-title {
       font-family: var(--serif);
-      font-size: clamp(2rem, 3.5vw, 3.2rem);
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
       font-weight: 300;
       color: var(--navy);
       line-height: 1.15;
+      margin-bottom: 0.5rem;
+    }
+
+    .book-subtitle {
+      font-family: var(--serif);
+      font-size: 1rem;
+      font-style: italic;
+      font-weight: 300;
+      color: var(--gold);
       margin-bottom: 1.8rem;
     }
 
@@ -706,9 +766,15 @@
         padding-bottom: 4rem;
       }
 
-      .book-inner {
+      .book-entry,
+      .book-entry--reverse {
         grid-template-columns: 1fr;
         gap: 3rem;
+      }
+
+      .book-entry--reverse .book-entry-cover,
+      .book-entry--reverse .book-entry-info {
+        order: unset;
       }
 
       .book-mockup {
@@ -842,49 +908,106 @@
     </div>
   </section>
 
-  <!-- LIVRO -->
-  <section class="book-section" id="livro">
-    <div class="book-inner">
-      <div class="book-mockup-wrap reveal">
-        <img src="autores/joaquimfagundes/livro-joaquim-gestao.png"
-          alt="Organização e Gestão de Negócio — Joaquim Fagundes" class="book-mockup" />
+  <!-- OBRAS -->
+  <section class="books-section" id="livros">
+    <div class="books-section-inner">
+
+      <div class="books-header reveal">
+        <p class="books-eyebrow">Obras publicadas</p>
+        <h2 class="books-heading">Dois livros.<br><em>Décadas de método.</em></h2>
       </div>
-      <div class="book-info reveal">
-        <p class="book-eyebrow">Obra publicada</p>
-        <h2 class="book-title">Organização e<br>Gestão de Negócio</h2>
-        <div class="gold-rule"></div>
-        <p class="book-desc">
-          Um manual direto e aplicável para empresários que querem estrutura real.
-          Não teoria de gestão. Método testado em décadas de consultoria —
-          organizado, diagramado e publicado com o rigor editorial que o conteúdo exige.
-        </p>
-        <div class="book-meta">
-          <div class="book-meta-item">
-            <p class="book-meta-label">Autor</p>
-            <p class="book-meta-value">Joaquim Fagundes</p>
-          </div>
-          <div class="book-meta-item">
-            <p class="book-meta-label">Editora</p>
-            <p class="book-meta-value">Brary Editora</p>
-          </div>
-          <div class="book-meta-item">
-            <p class="book-meta-label">Área</p>
-            <p class="book-meta-value">Gestão Empresarial</p>
-          </div>
-          <div class="book-meta-item">
-            <p class="book-meta-label">Disponível em</p>
-            <p class="book-meta-value">Livraria Brary</p>
-          </div>
+
+      <!-- Livro 1: Organização e Gestão do Negócio -->
+      <div class="book-entry reveal">
+        <div class="book-entry-cover">
+          <img src="autores/joaquimfagundes/Joaquim Fagundes - gestao.png"
+            alt="Organização e Gestão do Negócio — Joaquim Fagundes" class="book-mockup" />
         </div>
-        <a href="https://www.braryeditora.com/product-page/organiza%C3%A7%C3%A3o-e-gest%C3%A3o-do-neg%C3%B3cio"
-          target="_blank" rel="noopener" class="btn-buy">
-          Adquirir o livro
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-            <path d="M1 7h12M8 3l5 4-5 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"
-              stroke-linejoin="round" />
-          </svg>
-        </a>
+        <div class="book-entry-info">
+          <p class="book-eyebrow">Obra 1</p>
+          <h2 class="book-title">Organização e<br>Gestão do Negócio</h2>
+          <p class="book-subtitle">O que 35 anos formando empresários me ensinaram</p>
+          <div class="gold-rule"></div>
+          <p class="book-desc">
+            Um manual direto e aplicável para empresários que querem estrutura real.
+            Não teoria de gestão — método testado em décadas de consultoria,
+            organizado, diagramado e publicado com o rigor editorial que o conteúdo exige.
+            Mais de 130 mil empresários treinados revelados em cada página.
+          </p>
+          <div class="book-meta">
+            <div class="book-meta-item">
+              <p class="book-meta-label">Autor</p>
+              <p class="book-meta-value">Joaquim Fagundes</p>
+            </div>
+            <div class="book-meta-item">
+              <p class="book-meta-label">Editora</p>
+              <p class="book-meta-value">Brary Editora</p>
+            </div>
+            <div class="book-meta-item">
+              <p class="book-meta-label">Área</p>
+              <p class="book-meta-value">Gestão Empresarial</p>
+            </div>
+            <div class="book-meta-item">
+              <p class="book-meta-label">Disponível em</p>
+              <p class="book-meta-value">Livraria Brary</p>
+            </div>
+          </div>
+          <a href="https://www.braryeditora.com/product-page/organiza%C3%A7%C3%A3o-e-gest%C3%A3o-do-neg%C3%B3cio"
+            target="_blank" rel="noopener" class="btn-buy">
+            Adquirir o livro
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M1 7h12M8 3l5 4-5 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </a>
+        </div>
       </div>
+
+      <!-- Livro 2: Como Planejar seu Negócio -->
+      <div class="book-entry book-entry--reverse reveal">
+        <div class="book-entry-cover">
+          <img src="autores/joaquimfagundes/Joaquim Fagundes - negocio.png"
+            alt="Como Planejar seu Negócio — Joaquim Fagundes" class="book-mockup" />
+        </div>
+        <div class="book-entry-info">
+          <p class="book-eyebrow">Obra 2</p>
+          <h2 class="book-title">Como Planejar<br>seu Negócio</h2>
+          <p class="book-subtitle">O método que funcionou para +130 mil empresários</p>
+          <div class="gold-rule"></div>
+          <p class="book-desc">
+            Planejamento não é burocracia — é a diferença entre o empresário que sobrevive
+            e o que prospera. Neste livro, Joaquim Fagundes destila o mesmo método
+            aplicado em décadas de consultoria prática, em linguagem direta e
+            estrutura que vai do diagnóstico à execução.
+          </p>
+          <div class="book-meta">
+            <div class="book-meta-item">
+              <p class="book-meta-label">Autor</p>
+              <p class="book-meta-value">Joaquim Fagundes</p>
+            </div>
+            <div class="book-meta-item">
+              <p class="book-meta-label">Editora</p>
+              <p class="book-meta-value">Brary Editora</p>
+            </div>
+            <div class="book-meta-item">
+              <p class="book-meta-label">Área</p>
+              <p class="book-meta-value">Planejamento Empresarial</p>
+            </div>
+            <div class="book-meta-item">
+              <p class="book-meta-label">Disponível em</p>
+              <p class="book-meta-value">Livraria Brary</p>
+            </div>
+          </div>
+          <a href="https://www.braryeditora.com/braryon" target="_blank" rel="noopener" class="btn-buy">
+            Adquirir o livro
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M1 7h12M8 3l5 4-5 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </a>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -962,7 +1085,7 @@
         <div class="footer-col">
           <div class="footer-col-title">Autores</div>
           <ul>
-            <li><a href="autores/joaquimfagundes/joaquim-fagundes.html">Joaquim Fagundes</a></li>
+            <li><a href="joaquim-fagundes.html">Joaquim Fagundes</a></li>
             <li><a href="https://www.braryeditora.com/braryon" target="_blank" rel="noopener">Ver catálogo completo
                 ↗</a></li>
           </ul>
