@@ -4,9 +4,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Brary Editora — Ghostwriting &amp; Publicação Estratégica</title>
+  <title>Brary Editora — Casa de Estruturação de Capital Intelectual</title>
   <meta name="description"
-    content="Transformamos especialistas em autores publicados. Ghostwriting, estruturação e registro autoral para quem quer posicionamento real no mercado." />
+    content="Transformamos conhecimento, experiência e metodologias em ativos intelectuais que geram autoridade, impacto e novas fontes de receita. Desde 2013." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -1362,6 +1362,49 @@
         font-size: 1.55rem;
       }
     }
+
+    /* ─── HERO PHOTO ────────────────────────────────────────────── */
+    .hero-photo-wrap {
+      position: relative;
+      width: 100%;
+      max-width: 460px;
+      margin: 0 auto;
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .hero-photo {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      filter: grayscale(12%) brightness(0.88) contrast(1.05);
+    }
+
+    /* Gradiente esquerdo — funde com o navy do hero */
+    .hero-photo-fade-left {
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 38%;
+      background: linear-gradient(to right, var(--navy) 0%, transparent 100%);
+      pointer-events: none;
+    }
+
+    /* Gradiente inferior — ancora a foto no fundo */
+    .hero-photo-fade-bottom {
+      position: absolute;
+      inset: auto 0 0 0;
+      height: 32%;
+      background: linear-gradient(to top, var(--navy) 0%, transparent 100%);
+      pointer-events: none;
+    }
+
+    @media (max-width: 768px) {
+      .hero-photo-wrap {
+        max-width: 100%;
+        margin-top: 2.5rem;
+      }
+    }
   </style>
 </head>
 
@@ -1385,7 +1428,7 @@
       <li><a href="https://brary-institute-site.vercel.app" target="_blank" rel="noopener">Instituto</a></li>
       <li><a href="revisores.html">Revisores</a></li>
       <li><a href="parceiros.html">Parceiros</a></li>
-      <li><a href="contato.html" class="nav-cta">Publicar meu livro</a></li>
+      <li><a href="contato.html" class="nav-cta">Iniciar minha jornada</a></li>
     </ul>
   </nav>
 
@@ -1395,96 +1438,64 @@
 
       <!-- Texto -->
       <div class="hero-content">
-        <p class="hero-eyebrow">Editora Brasileira — Est. 2013</p>
+        <p class="hero-eyebrow">Casa de Estruturação de Capital Intelectual — Est. 2013</p>
         <h1 class="hero-headline">
-          Você tem o<br>
-          conhecimento.<br>
-          Nós construímos<br>
-          <em>a sua autoridade.</em>
+          O seu conhecimento<br>
+          merece existir<br>
+          <em>além de você.</em>
         </h1>
         <p class="hero-sub">
-          Especialistas, empresários e criadores que publicam com a Brary
-          saem com um livro profissional, registro autoral completo
-          e posicionamento real no seu mercado.
+          Transformamos conhecimento, experiência e metodologias
+          em ativos intelectuais que geram autoridade, impacto
+          e novas fontes de receita — da descoberta ao legado.
         </p>
         <div class="hero-actions">
-          <a href="contato.html" class="btn-primary">Quero publicar meu livro</a>
+          <a href="contato.html" class="btn-primary">Iniciar minha jornada</a>
           <a href="#o-que-voce-recebe" class="btn-ghost">Ver como funciona</a>
         </div>
       </div>
 
-      <!-- Marca decorativa: símbolo da logo em escala grande -->
-      <div class="hero-mark" aria-hidden="true">
-        <svg viewBox="0 0 420 500" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- Elemento traseiro (sombra) -->
-          <path d="
-            M 118 88
-            C 118 68 132 58 152 60
-            L 348 74
-            C 368 76 376 92 374 110
-            L 350 400
-            L 105 382
-            Z" fill="rgba(184,150,62,0.14)" />
-          <!-- Elemento frontal principal -->
-          <path d="
-            M 38 62
-            C 38 40 56 30 78 32
-            L 280 46
-            C 302 48 310 66 308 86
-            L 284 382
-            C 282 398 268 406 252 404
-            L 42 388
-            C 24 386 20 370 22 352
-            Z" fill="rgba(184,150,62,0.22)" />
-          <!-- Detalhe interno sutil -->
-          <path d="
-            M 80 108
-            L 264 120
-            L 242 350
-            L 62 336
-            Z" fill="rgba(184,150,62,0.09)" />
-          <!-- Linha dourada superior -->
-          <line x1="78" y1="32" x2="280" y2="46" stroke="rgba(184,150,62,0.45)" stroke-width="2" />
-          <!-- Ponto de luz no canto superior esquerdo -->
-          <circle cx="78" cy="32" r="4" fill="rgba(184,150,62,0.6)" />
-        </svg>
+      <!-- Foto do fundador -->
+      <div class="hero-mark" aria-hidden="false">
+        <div class="hero-photo-wrap">
+          <img src="fotoorlando.jpg" alt="Orlando Carvalho — Fundador da Brary Editora" class="hero-photo" />
+          <div class="hero-photo-fade-left"></div>
+          <div class="hero-photo-fade-bottom"></div>
+        </div>
       </div>
 
     </div>
   </section>
 
-  <!-- ═══════════════ CLARITY ═══════════════ -->
   <section class="clarity" id="o-que-voce-recebe">
     <div class="clarity-inner">
       <h2 class="clarity-title reveal">
-        Um livro é o único ativo que<br>
-        <em>nenhum algoritmo</em> pode depreciar.
+        O conhecimento que fica<br>
+        apenas na sua cabeça<br>
+        <em>não pertence ao mundo.</em>
       </h2>
 
       <div class="clarity-item reveal">
         <div class="clarity-num">01</div>
         <div>
-          <div class="clarity-item-title">Livro profissional, escrito com a sua voz</div>
-          <p class="clarity-item-desc">Nossa equipe captura sua expertise, sua história e seu jeito de pensar — e
-            entrega uma obra que é genuinamente sua. Você assina. Nós escrevemos.</p>
+          <div class="clarity-item-title">Leitura Interna — extraímos o que você não percebe que tem</div>
+          <p class="clarity-item-desc">Antes do livro, antes da metodologia, existe um processo fundador: a leitura interna. Identificamos, organizamos e formalizamos o conhecimento tácito que você acumulou — e que ainda não tem forma.</p>
         </div>
       </div>
 
       <div class="clarity-item reveal">
         <div class="clarity-num">02</div>
         <div>
-          <div class="clarity-item-title">Posicionamento como autoridade no seu mercado</div>
-          <p class="clarity-item-desc">Um livro bem posicionado abre conversas que currículo, posts e palestras não
-            abrem. É credencial permanente — não depende de alcance nem de plataforma.</p>
+          <div class="clarity-item-title">Do livro ao ecossistema de autoridade e receita</div>
+          <p class="clarity-item-desc">O livro é o primeiro ativo — não o produto final. Construímos junto a esteira completa: obra publicada, metodologia certificada, posicionamento estratégico e novos fluxos de receita.</p>
         </div>
       </div>
 
       <div class="clarity-item reveal">
         <div class="clarity-num">03</div>
         <div>
-          <div class="clarity-item-title">Estrutura pronta para gerar negócios</div>
-          <p class="clarity-item-desc">Do ISBN ao registro na Biblioteca Nacional, cuidamos de toda a parte burocrática.
-            Você foca no que sabe fazer. Nós garantimos que o livro chegue ao mercado com tudo em ordem.</p>
+          <div class="clarity-item-title">Acompanhamento da descoberta ao legado</div>
+          <p class="clarity-item-desc">A jornada não termina na publicação. Acompanhamos o especialista em cada etapa — da primeira obra ao licenciamento da metodologia, do posicionamento ao impacto duradouro.</p>
         </div>
       </div>
     </div>
@@ -1506,12 +1517,9 @@
       <div class="services-grid">
         <div class="service-card reveal">
           <div class="service-num">01</div>
-          <h3 class="service-title">Ghostwriting<br>Completo</h3>
-          <p class="service-desc">Do briefing estratégico ao manuscrito finalizado. Realizamos entrevistas em
-            profundidade, estruturamos o conteúdo e escrevemos com a sua voz — sem que você precise digitar uma linha.
-          </p>
-          <p class="service-deliverable">Entrega: manuscrito revisado + estrutura editorial + orientação de lançamento
-          </p>
+          <h3 class="service-title">Desenvolvimento<br>Editorial Completo</h3>
+          <p class="service-desc">Do briefing estratégico ao manuscrito finalizado. Realizamos a leitura interna, estruturamos o conteúdo e escrevemos com a sua voz — entregando uma obra que é genuinamente sua e estrategicamente posicionada.</p>
+          <p class="service-deliverable">Entrega: manuscrito revisado + estrutura editorial + orientação de lançamento</p>
           <span class="service-price">A partir de R$ 7.500 · Projeto personalizado</span>
           <a href="contato.html" class="service-cta">
             Solicitar proposta
@@ -1523,10 +1531,9 @@
         </div>
         <div class="service-card reveal">
           <div class="service-num">02</div>
-          <h3 class="service-title">Estruturação<br>Estratégica</h3>
-          <p class="service-desc">Ideal para quem já tem conteúdo produzido — mas sem coesão. Organizamos suas ideias em
-            uma arquitetura narrativa clara, com sumário, posicionamento e proposta editorial definidos.</p>
-          <p class="service-deliverable">Entrega: sumário executivo + mapa narrativo + briefing para escrita</p>
+          <h3 class="service-title">Estruturação de<br>Capital Intelectual</h3>
+          <p class="service-desc">Para quem já tem conteúdo e resultado — mas sem forma. Organizamos o conhecimento tácito em metodologia estruturada, com sumário, posicionamento, proposta editorial e base para certificação.</p>
+          <p class="service-deliverable">Entrega: mapa metodológico + sumário executivo + briefing para escrita</p>
           <span class="service-price">A partir de R$ 4.500 · Projeto personalizado</span>
           <a href="contato.html" class="service-cta">
             Solicitar proposta
@@ -1538,10 +1545,8 @@
         </div>
         <div class="service-card reveal">
           <div class="service-num">03</div>
-          <h3 class="service-title">Registro<br>Autoral</h3>
-          <p class="service-desc">ISBN, ficha catalográfica, Biblioteca Nacional e proteção de direitos autorais. Para
-            autores que chegam com o manuscrito pronto e precisam da estrutura editorial para publicar com
-            credibilidade.</p>
+          <h3 class="service-title">Publicação &amp;<br>Registro Autoral</h3>
+          <p class="service-desc">ISBN, ficha catalográfica, Biblioteca Nacional e proteção de direitos autorais. Para autores que chegam com o manuscrito pronto e precisam da estrutura editorial para publicar com credibilidade e registro completo.</p>
           <p class="service-deliverable">Entrega: ISBN + ficha catalográfica + registro completo</p>
           <span class="service-price">Incluído nos pacotes completos</span>
           <a href="contato.html" class="service-cta">
@@ -1727,11 +1732,11 @@
         <div>
           <!-- Substitua logo-branca.png pela logo com fundo transparente -->
           <img src="logo-branca.png" alt="Brary Editora" class="footer-logo" />
-          <div class="footer-brand-tag">Ghostwriting &amp; Publicação Estratégica</div>
+          <div class="footer-brand-tag">Casa de Estruturação de Capital Intelectual</div>
           <p class="footer-brand-desc">
             Trabalhamos com pessoas que têm muito a dizer — e que entendem
-            que um livro bem feito é o investimento de posicionamento
-            com o maior retorno de longo prazo.
+            que estruturar, registrar e fazer circular o que sabem
+            é o investimento de posicionamento com o maior retorno de longo prazo.
           </p>
         </div>
         <div class="footer-col">
@@ -1748,9 +1753,9 @@
         <div class="footer-col">
           <div class="footer-col-title">Serviços</div>
           <ul>
-            <li><a href="contato.html">Ghostwriting Completo</a></li>
-            <li><a href="contato.html">Estruturação Estratégica</a></li>
-            <li><a href="contato.html">Registro Autoral</a></li>
+            <li><a href="contato.html">Desenvolvimento Editorial</a></li>
+            <li><a href="contato.html">Estruturação de Capital Intelectual</a></li>
+            <li><a href="contato.html">Publicação &amp; Registro Autoral</a></li>
             <li><a href="https://www.braryeditora.com/braryon" target="_blank" rel="noopener">Catálogo de Livros</a>
             </li>
           </ul>
