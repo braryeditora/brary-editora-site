@@ -435,8 +435,11 @@
     }
 
     .profile-icon {
-      font-size: 1.8rem;
-      margin-bottom: 0.8rem;
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 56px;
     }
 
     .profile-card h3 {
@@ -834,8 +837,99 @@
       transition-delay: 0.2s;
     }
 
-    .reveal-delay-3 {
-      transition-delay: 0.3s;
+    /* ─── DEPOIMENTO HERO ─── */
+    .hero-testimonial {
+      background: var(--navy-card);
+      border: 1px solid var(--gold-border);
+      border-radius: 4px;
+      padding: 2.5rem 2rem;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 1.6rem;
+    }
+
+    .hero-testimonial::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 40%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+
+    .testimonial-photo-wrap {
+      position: relative;
+      width: 120px;
+      margin: 0 auto;
+      flex-shrink: 0;
+    }
+
+    .testimonial-photo {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+      filter: grayscale(15%);
+    }
+
+    /* Moldura dourada — padrão do ecossistema Brary */
+    .testimonial-photo-frame {
+      position: absolute;
+      top: -8px;
+      left: -8px;
+      right: 8px;
+      bottom: 8px;
+      border: 1px solid rgba(201, 168, 76, 0.25);
+      pointer-events: none;
+    }
+
+    .testimonial-quote {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-style: italic;
+      color: var(--text);
+      line-height: 1.65;
+      text-align: center;
+    }
+
+    .testimonial-quote::before {
+      content: '"';
+      color: var(--gold);
+      font-size: 1.4rem;
+      line-height: 0;
+      vertical-align: -0.3em;
+      margin-right: 0.15em;
+    }
+
+    .testimonial-quote::after {
+      content: '"';
+      color: var(--gold);
+      font-size: 1.4rem;
+      line-height: 0;
+      vertical-align: -0.3em;
+      margin-left: 0.15em;
+    }
+
+    .testimonial-name {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text);
+      text-align: center;
+      margin-top: 0.2rem;
+    }
+
+    .testimonial-role {
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-align: center;
+      margin-top: 0.2rem;
     }
   </style>
 </head>
@@ -871,11 +965,16 @@
           publicados. A Brary transforma esse encontro em oportunidade para todos — inclusive para você.</p>
         <a href="#formulario" class="hero-cta">Quero ser parceiro</a>
       </div>
-      <div class="hero-stat-box reveal">
-        <div class="stat-number">5<span style="font-size:2.8rem">%</span></div>
-        <div class="stat-label">Comissão por projeto fechado</div>
-        <p class="stat-desc">Uma indicação sua pode se transformar em um livro — e em renda recorrente para sua rede.
-        </p>
+      <div class="hero-testimonial reveal">
+        <div class="testimonial-photo-wrap">
+          <img src="ione.jfif" alt="Ione Larúcia — Aproximadora Editorial · Brary Editora" class="testimonial-photo" />
+          <div class="testimonial-photo-frame"></div>
+        </div>
+        <p class="testimonial-quote">Entrei na feira e já identifiquei especialistas com histórias que merecem virar livro. A Brary me deu um olhar diferente para as pessoas.</p>
+        <div>
+          <div class="testimonial-name">Ione Larúcia</div>
+          <div class="testimonial-role">Aproximadora Editorial · Brary Editora</div>
+        </div>
       </div>
     </div>
   </section>
@@ -909,7 +1008,7 @@
         <div class="step reveal reveal-delay-3">
           <div class="step-num">4</div>
           <h3>Comissão</h3>
-          <p>Você recebe <strong style="color:var(--gold)">5%</strong> do valor do projeto após o fechamento — com
+          <p>Você recebe <strong style="color:var(--gold)">10%</strong> do valor do projeto após o fechamento — com
             transparência e documentação.</p>
         </div>
       </div>
@@ -927,32 +1026,89 @@
       <h2 class="section-title reveal">Quem convive com<br /><em>especialistas</em></h2>
       <div class="profile-cards">
         <div class="profile-card reveal">
-          <div class="profile-icon">🎤</div>
+          <div class="profile-icon">
+            <svg width="48" height="56" viewBox="0 0 48 56" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <!-- Microfone -->
+              <circle cx="24" cy="12" r="8" stroke="#C9A84C" stroke-width="1.5"/>
+              <rect x="18" y="22" width="12" height="14" rx="6" stroke="#C9A84C" stroke-width="1.5"/>
+              <line x1="24" y1="36" x2="24" y2="44" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round"/>
+              <line x1="16" y1="44" x2="32" y2="44" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round"/>
+              <!-- Ondas -->
+              <path d="M10,26 Q6,29 10,32" stroke="#C9A84C" stroke-width="1.2" stroke-linecap="round" fill="none"/>
+              <path d="M38,26 Q42,29 38,32" stroke="#C9A84C" stroke-width="1.2" stroke-linecap="round" fill="none"/>
+              <path d="M6,22 Q0,29 6,36" stroke="#C9A84C" stroke-width="1" stroke-linecap="round" fill="none" opacity="0.6"/>
+              <path d="M42,22 Q48,29 42,36" stroke="#C9A84C" stroke-width="1" stroke-linecap="round" fill="none" opacity="0.6"/>
+            </svg>
+          </div>
           <h3>Palestrantes</h3>
           <p>Que circulam em eventos corporativos e conhecem líderes com experiência acumulada para publicar.</p>
         </div>
         <div class="profile-card reveal reveal-delay-1">
-          <div class="profile-icon">🧭</div>
+          <div class="profile-icon">
+            <svg width="48" height="56" viewBox="0 0 48 56" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <!-- Pessoa esquerda -->
+              <circle cx="14" cy="10" r="7" stroke="#C9A84C" stroke-width="1.5"/>
+              <path d="M4,22 Q2,34 8,42" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+              <path d="M24,22 Q24,34 20,42" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+              <line x1="4" y1="22" x2="24" y2="22" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round"/>
+              <!-- Pessoa direita -->
+              <circle cx="34" cy="10" r="7" stroke="#C9A84C" stroke-width="1.5"/>
+              <path d="M24,22 Q24,34 28,42" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+              <path d="M44,22 Q46,34 40,42" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+              <line x1="24" y1="22" x2="44" y2="22" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round"/>
+              <!-- Seta de conexão -->
+              <line x1="22" y1="10" x2="26" y2="10" stroke="#C9A84C" stroke-width="1.2" stroke-linecap="round"/>
+              <polyline points="24,7 27,10 24,13" stroke="#C9A84C" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            </svg>
+          </div>
           <h3>Coaches e Mentores</h3>
           <p>Que acompanham executivos em transformação — naturalmente em contato com quem tem método para ensinar.</p>
         </div>
         <div class="profile-card reveal reveal-delay-2">
-          <div class="profile-icon">🤝</div>
+          <div class="profile-icon">
+            <svg width="48" height="56" viewBox="0 0 48 56" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <!-- Cabeça -->
+              <circle cx="24" cy="10" r="8" stroke="#C9A84C" stroke-width="1.5"/>
+              <!-- Ombros/gola -->
+              <path d="M10,22 L10,24 L38,24 L38,22" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              <!-- Documento/pasta -->
+              <rect x="10" y="28" width="28" height="20" rx="2" stroke="#C9A84C" stroke-width="1.5"/>
+              <line x1="16" y1="35" x2="32" y2="35" stroke="#C9A84C" stroke-width="1.2" stroke-linecap="round"/>
+              <line x1="16" y1="40" x2="26" y2="40" stroke="#C9A84C" stroke-width="1.2" stroke-linecap="round"/>
+              <!-- Check -->
+              <polyline points="28,40 31,43 36,37" stroke="#C9A84C" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            </svg>
+          </div>
           <h3>Consultores</h3>
           <p>Que entram em organizações e identificam profissionais com know-how inédito guardado em gavetas.</p>
         </div>
         <div class="profile-card reveal reveal-delay-3">
-          <div class="profile-icon">🏢</div>
+          <div class="profile-icon">
+            <svg width="48" height="56" viewBox="0 0 48 56" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <!-- Pessoa central -->
+              <circle cx="24" cy="9" r="8" stroke="#C9A84C" stroke-width="1.5"/>
+              <path d="M13,21 Q11,30 16,38" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+              <path d="M35,21 Q37,30 32,38" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+              <line x1="13" y1="21" x2="35" y2="21" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round"/>
+              <!-- Pessoas laterais menores -->
+              <circle cx="6" cy="20" r="5" stroke="#C9A84C" stroke-width="1.2"/>
+              <circle cx="42" cy="20" r="5" stroke="#C9A84C" stroke-width="1.2"/>
+              <!-- Linhas org -->
+              <line x1="13" y1="20" x2="11" y2="20" stroke="#C9A84C" stroke-width="1" stroke-linecap="round"/>
+              <line x1="35" y1="20" x2="37" y2="20" stroke="#C9A84C" stroke-width="1" stroke-linecap="round"/>
+              <!-- Estrela talento -->
+              <path d="M24,42 L25.5,47 L30,47 L26.5,50 L28,55 L24,52 L20,55 L21.5,50 L18,47 L22.5,47 Z" stroke="#C9A84C" stroke-width="1.2" stroke-linejoin="round" fill="none"/>
+            </svg>
+          </div>
           <h3>Profissionais de RH</h3>
-          <p>Que mapeiam talentos internos — facilitadores, líderes de T&D — com conteúdo publicável e audiência pronta.
-          </p>
+          <p>Que mapeiam talentos internos — facilitadores, líderes de T&D — com conteúdo publicável e audiência pronta.</p>
         </div>
       </div>
 
       <!-- Commission highlight -->
       <div class="commission-block reveal">
         <div class="commission-num">
-          <div class="commission-pct">5<span>%</span></div>
+          <div class="commission-pct">10<span>%</span></div>
           <div class="commission-tag">do valor do projeto</div>
         </div>
         <div class="commission-details">
@@ -1050,7 +1206,7 @@
         <div class="footer-col">
           <h4>Contato</h4>
           <ul>
-            <li><a href="mailto:editorial@braryeditora.com.br">editorial@braryeditora.com.br</a></li>
+            <li><a href="mailto:contato@braryeditora.com">contato@braryeditora.com</a></li>
             <li><a href="https://www.instagram.com/braryeditora" target="_blank">Instagram</a></li>
             <li><a href="https://www.linkedin.com/company/braryeditora" target="_blank">LinkedIn</a></li>
           </ul>
